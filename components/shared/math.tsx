@@ -8,7 +8,7 @@ interface MathProps {
 }
 
 export const MathInline = ({ math }: MathProps) => (
-  <span style={{ color: "#0a2f41", padding: "0 6px" }}>
+  <span style={{ color: "inherit", padding: "0 6px" }}>
     <InlineMath math={math} />
   </span>
 );
@@ -24,7 +24,7 @@ export const MathBlock = ({ math }: MathProps) => (
       justifyContent: "center", // 居中對齊
       alignItems: "center",
       fontSize: "48px", // 針對簡報放大的字體
-      color: "#0a2f41", // 主色調
+      color: "inherit", // 主色調
       boxShadow: "0 4px 12px rgba(0,0,0,0.03)",
       margin: "20px 0",
     }}

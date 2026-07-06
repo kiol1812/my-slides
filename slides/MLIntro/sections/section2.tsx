@@ -1,12 +1,17 @@
 import { type Page } from "@open-slide/core";
+import { MarkerType } from "@xyflow/react";
 
-import { ContentLayout } from "../../../components/academic/content";
+import {
+  ContentLayout,
+  ContentWithImgLayout,
+} from "../../../components/academic/content";
 import { createSectionSlide } from "../../../components/academic/section";
 import { MathInline, MathBlock } from "../../../components/shared/math";
 import { CodeBlock } from "../../../components/shared/codeBlock";
 import { Callout } from "../../../components/shared/callout";
 import { Highlight } from "../../../components/shared/highlight";
 import { Badge } from "../../../components/shared/badge";
+import { FlowDiagram } from "../../../components/shared/flowDiagram";
 
 import { sectionData } from "../meta";
 
@@ -180,9 +185,116 @@ const GradientDescentPage: Page = () => (
   </ContentLayout>
 );
 
+// 定義節點 (注意 data.label 裡面可以直接放 JSX / React 元件)
+const initialNodes = [
+  {
+    id: "1",
+    type: "custom",
+    position: { x: 0, y: 0 },
+    data: {
+      label: (
+        <span>
+          Input <MathInline math="X" />
+        </span>
+      ),
+    },
+  },
+  {
+    id: "2",
+    type: "custom",
+    position: { x: 0, y: 150 },
+    data: {
+      label: (
+        <span>
+          Linear <MathInline math="z = WX + b" />
+        </span>
+      ),
+      highlight: true,
+    },
+  },
+  {
+    id: "3",
+    type: "custom",
+    position: { x: 0, y: 300 },
+    data: {
+      label: (
+        <span>
+          Activation <MathInline math="a = \sigma(z)" />
+        </span>
+      ),
+    },
+  },
+];
+
+// 定義連線 (帶有動畫的箭頭)
+const initialEdges = [
+  {
+    id: "e1-2",
+    source: "1",
+    target: "2",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e2-3",
+    source: "2",
+    target: "3",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+];
+
+const ForwardPropPage: Page = () => (
+  <ContentWithImgLayout
+    eyebrow="Section 2: Deep Learning"
+    title="Forward Propagation Pipeline"
+    textFlex={1}
+    imgFlex={1.5} // 讓圖表區塊大一點
+    // 將 FlowDiagram 直接作為 imageNode 傳入右側
+    imageNode={<FlowDiagram nodes={initialNodes} edges={initialEdges} />}
+  >
+    <p style={{ fontSize: 32, color: "#555", lineHeight: 1.6 }}>
+      The data flows through the network in a distinct sequence.
+    </p>
+    <ul
+      style={{
+        fontSize: 28,
+        color: "#555",
+        lineHeight: 1.8,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
+      <li>
+        <strong>Input:</strong> Raw data features are fed into the network.
+      </li>
+      <li>
+        <strong>Linear:</strong> Weights and biases are applied.
+      </li>
+      <li>
+        <strong>Activation:</strong> Non-linearity is introduced.
+      </li>
+    </ul>
+  </ContentWithImgLayout>
+);
+
 export const section2Slides: Page[] = [
   createSectionSlide(1, sectionData),
   NeuralNetworkPage,
   MathDemoPage,
   GradientDescentPage,
+  ForwardPropPage,
 ];

@@ -75,7 +75,7 @@ export const ContentWithImgLayout = ({
           flexDirection: "row",
           gap: 80,
           flex: 1,
-          alignItems: "flex-start",
+          alignItems: "stretch",
         }}
       >
         {/* Left: texts */}
@@ -92,7 +92,13 @@ export const ContentWithImgLayout = ({
 
         {/* Right: image */}
         <div
-          style={{ flex: imgFlex, display: "flex", justifyContent: "center" }}
+          style={{
+            flex: imgFlex,
+            display: "flex",
+            justifyContent: "center",
+            width: "100%",
+            position: "relative",
+          }}
         >
           {imageNode ? (
             imageNode
