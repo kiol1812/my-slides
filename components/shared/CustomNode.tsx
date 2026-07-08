@@ -1,37 +1,67 @@
 import React from "react";
 import { Handle, Position } from "@xyflow/react";
 
-export const CustomNode = ({ data }: { data: any }) => {
+export const CustomNode = ({ id, data }: { id: string; data: any }) => {
+  const targetPos = data.targetPosition || Position.Top;
+  const sourcePos = data.sourcePosition || Position.Bottom;
+
+  const width = data.width || "150px";
+  const height = data.height || "72px";
+
   return (
-    <div
-      style={{
-        padding: "16px 24px",
-        borderRadius: "12px",
-        background: data.highlight ? "#0a2f41" : "#f8f9fa",
-        color: data.highlight ? "#ffffff" : "#0a2f41",
-        border: `2px solid ${data.highlight ? "#0a2f41" : "#7c9fa8"}`,
-        boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-        fontSize: "20px",
-        fontWeight: 600,
-        textAlign: "center",
-        minWidth: "150px",
-      }}
-    >
+    <div style={{ position: "relative" }}>
       {/* 上方的連接點 */}
       <Handle
         type="target"
-        position={Position.Top}
-        style={{ background: "#7c9fa8" }}
+        position={targetPos}
+        style={{
+          background: "#7c9fa8",
+          top: data.top || "50%",
+          left: data.left || "50%",
+          opacity: 0,
+        }}
       />
 
-      {/* 節點內容 (這裡可以直接渲染 React 元素！) */}
-      {data.label}
-
+      <div
+        style={{
+          display: "flex",
+          alignContent: "center",
+          justifyContent: "center",
+          width: width,
+          height: height,
+          boxSizing: "border-box",
+          padding: "16px 24px",
+          borderRadius: "12px",
+          background: !data.erase_bg
+            ? data.highlight
+              ? "#0a2f41"
+              : "#f8f9fa"
+            : undefined,
+          color: data.highlight ? "#ffffff" : "#0a2f41",
+          border: !data.erase_border
+            ? `2px solid ${data.highlight ? "#0a2f41" : "#7c9fa8"}`
+            : undefined,
+          boxShadow: data.erase_bg ? undefined : "0 4px 12px rgba(0,0,0,0.05)",
+          fontSize: "20px",
+          fontWeight: 600,
+          textAlign: "center",
+        }}
+      >
+        {/* 節點內容 (這裡可以直接渲染 React 元素！) */}
+        {data.label}
+      </div>
       {/* 下方的連接點 */}
       <Handle
         type="source"
-        position={Position.Bottom}
-        style={{ background: "#7c9fa8" }}
+        position={sourcePos}
+        style={{
+          background: "#7c9fa8",
+          top:
+            targetPos == Position.Left || targetPos == Position.Right
+              ? "75%"
+              : "0%",
+          opacity: 0,
+        }}
       />
     </div>
   );

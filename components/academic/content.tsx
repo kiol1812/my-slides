@@ -20,6 +20,9 @@ export interface ContentWithImgLayoutProps {
   imgFlex?: number;
 
   authorInfo?: string;
+
+  topContent?: ReactNode;
+  bottomContent?: ReactNode;
 }
 
 export const ContentWithImgLayout = ({
@@ -33,6 +36,8 @@ export const ContentWithImgLayout = ({
   textFlex = 1,
   imgFlex = 1,
   authorInfo = "Machine Learning Intro",
+  topContent,
+  bottomContent,
 }: ContentWithImgLayoutProps) => (
   <div style={fill}>
     <div
@@ -72,52 +77,68 @@ export const ContentWithImgLayout = ({
       <div
         style={{
           display: "flex",
-          flexDirection: "row",
-          gap: 80,
+          flexDirection: "column",
+          gap: 0, // 上下區塊與中間左右分欄的間距
           flex: 1,
-          alignItems: "stretch",
         }}
       >
-        {/* Left: texts */}
+        {/* Top Content: 如果有傳入才渲染 */}
+        {topContent && <div style={{ width: "100%" }}>{topContent}</div>}
+
+        {/* Middle: 原本的左右分欄 */}
         <div
           style={{
-            flex: textFlex,
             display: "flex",
-            flexDirection: "column",
-            gap: 30,
+            flexDirection: "row",
+            gap: 80,
+            flex: 1, // 讓中間內容自動撐開剩餘空間
+            alignItems: "stretch",
           }}
         >
-          {children}
+          {/* Left: texts */}
+          <div
+            style={{
+              flex: textFlex,
+              display: "flex",
+              flexDirection: "column",
+              gap: 30,
+            }}
+          >
+            {children}
+          </div>
+
+          {/* Right: image */}
+          <div
+            style={{
+              flex: imgFlex,
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              position: "relative",
+            }}
+          >
+            {imageNode ? (
+              imageNode
+            ) : (
+              <ImagePlaceholder
+                hint={imageHint}
+                width={
+                  Number.isNaN(Number(imageWidth))
+                    ? undefined
+                    : Number(imageWidth)
+                }
+                height={
+                  Number.isNaN(Number(imageHeight))
+                    ? undefined
+                    : Number(imageHeight)
+                }
+              />
+            )}
+          </div>
         </div>
 
-        {/* Right: image */}
-        <div
-          style={{
-            flex: imgFlex,
-            display: "flex",
-            justifyContent: "center",
-            width: "100%",
-            position: "relative",
-          }}
-        >
-          {imageNode ? (
-            imageNode
-          ) : (
-            <ImagePlaceholder
-              hint={imageHint}
-              width={
-                Number.isNaN(Number(imageWidth))
-                  ? undefined
-                  : Number(imageWidth)
-              }
-              height={
-                Number.isNaN(Number(imageHeight))
-                  ? undefined
-                  : Number(imageHeight)
-              }
-            />
-          )}
-        </div>
+        {/* Bottom Content: 如果有傳入才渲染 */}
+        {bottomContent && <div style={{ width: "100%" }}>{bottomContent}</div>}
       </div>
     </div>
     <Footer authorInfo={authorInfo} />

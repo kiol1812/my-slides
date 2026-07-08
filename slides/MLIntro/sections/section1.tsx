@@ -1,13 +1,24 @@
 import { type Page } from "@open-slide/core";
 
-import { ContentLayout } from "../../../components/academic/content";
+import {
+  ContentLayout,
+  ContentWithImgLayout,
+} from "../../../components/academic/content";
 import { createSectionSlide } from "../../../components/academic/section";
+import { Callout } from "../../../components/shared/callout";
+import { MathInline } from "../../../components/shared/math";
+import { Highlight } from "../../../components/shared/highlight";
+import { FlowDiagram } from "../../../components/shared/flowDiagram";
 
 import { sectionData } from "../meta";
+import {
+  different_type_of_functions_nodes,
+  different_type_of_functions_edges,
+} from "../assets/different_type_of_functions";
 
-const MLIntroPage: Page = () => (
+const What_is_ML_Page: Page = () => (
   <ContentLayout
-    eyebrow="Section 1: Fundamentals"
+    eyebrow="Section 1: Introduction to Machine Learning"
     title="What is Machine Learning?"
   >
     <p
@@ -21,7 +32,8 @@ const MLIntroPage: Page = () => (
     >
       Machine learning is a subset of artificial intelligence that involves
       training algorithms to learn from and make predictions or decisions based
-      on data, without being explicitly programmed for the task.
+      on data,{" "}
+      <Highlight>without being explicitly programmed for the task</Highlight>.
     </p>
 
     <ul
@@ -50,10 +62,84 @@ const MLIntroPage: Page = () => (
         Learning through trial and error.
       </li>
     </ul>
+
+    <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
+      <Callout type="warning" title="">
+        Machine Learning <MathInline math="\approx" /> Looking for functions.
+      </Callout>
+    </div>
   </ContentLayout>
+);
+
+const Different_type_of_functions_Page: Page = () => (
+  <ContentWithImgLayout
+    eyebrow="Section 1: Introduction to Machine Learning"
+    title="Different Type of Functions"
+    textFlex={1}
+    imgFlex={1.4}
+    imageNode={
+      <FlowDiagram
+        nodes={different_type_of_functions_nodes}
+        edges={different_type_of_functions_edges}
+      />
+    }
+    bottomContent={
+      <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
+        <Callout type="warning" title="Structured Learning">
+          Create something with structure, e.g. image.
+        </Callout>
+      </div>
+    }
+  >
+    <p
+      className="ac-fadeIn"
+      style={{
+        fontSize: 44,
+        color: "#0a2f41",
+        lineHeight: 1.6,
+        margin: 0,
+      }}
+    >
+      <strong style={{ color: "#0a2f41" }}>Regression</strong>:
+    </p>
+    <p
+      className="ac-fadeIn"
+      style={{
+        fontSize: 32,
+        color: "#0a2f41",
+        lineHeight: 1.6,
+        margin: 0,
+      }}
+    >
+      The function outputs is a scalar.
+    </p>
+    <p
+      className="ac-fadeIn"
+      style={{
+        fontSize: 44,
+        color: "#0a2f41",
+        lineHeight: 1.6,
+        margin: 0,
+      }}
+    >
+      <strong style={{ color: "#0a2f41" }}>Classification</strong>:
+    </p>
+    <p
+      className="ac-fadeIn"
+      style={{
+        fontSize: 32,
+        color: "#0a2f41",
+        lineHeight: 1.6,
+        margin: 0,
+      }}
+    >
+      Given options (classes), the function outputs the correct one.
+    </p>
+  </ContentWithImgLayout>
 );
 
 export const section1Slides: Page[] = [
   createSectionSlide(0, sectionData),
-  MLIntroPage,
+  What_is_ML_Page,
+  Different_type_of_functions_Page,
 ];
