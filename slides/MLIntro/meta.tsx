@@ -7,8 +7,7 @@ export const sectionData: SectionItem[] = [
   },
   {
     title: "Linear Model",
-    subtitle:
-      "Exploring Neural Networks, Forward Propagation, and Backpropagation.",
+    subtitle: "",
   },
   {
     title: "Unlinear Model",

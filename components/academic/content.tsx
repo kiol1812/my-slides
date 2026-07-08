@@ -42,7 +42,7 @@ export const ContentWithImgLayout = ({
   <div style={fill}>
     <div
       style={{
-        padding: "120px 140px",
+        padding: "120px 0px 0px 140px",
         display: "flex",
         flexDirection: "column",
         height: "100%",
@@ -66,7 +66,7 @@ export const ContentWithImgLayout = ({
             letterSpacing: "-0.02em",
             lineHeight: 1.05,
             margin: 0,
-            maxWidth: 1500,
+            width: "100%",
           }}
         >
           {title}
@@ -160,7 +160,7 @@ export const ContentLayout = ({
   <div style={fill}>
     <div
       style={{
-        padding: "120px 140px",
+        padding: "120px 0px 0px 140px",
         display: "flex",
         flexDirection: "column",
         height: "100%",
@@ -184,7 +184,7 @@ export const ContentLayout = ({
             letterSpacing: "-0.02em",
             lineHeight: 1.05,
             margin: 0,
-            maxWidth: 1500,
+            width: "100%",
           }}
         >
           {title}
