@@ -67,6 +67,7 @@ export const ContentWithImgLayout = ({
             lineHeight: 1.05,
             margin: 0,
             width: "100%",
+            zIndex: 1,
           }}
         >
           {title}
@@ -185,6 +186,7 @@ export const ContentLayout = ({
             lineHeight: 1.05,
             margin: 0,
             width: "100%",
+            zIndex: 1,
           }}
         >
           {title}
@@ -198,7 +200,6 @@ export const ContentLayout = ({
           display: "flex",
           flexDirection: "column",
           gap: 40,
-          maxWidth: 1400,
         }}
       >
         {children}

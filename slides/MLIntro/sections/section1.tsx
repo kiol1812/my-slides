@@ -6,7 +6,7 @@ import {
 } from "../../../components/academic/content";
 import { createSectionSlide } from "../../../components/academic/section";
 import { Callout } from "../../../components/shared/callout";
-import { MathInline } from "../../../components/shared/math";
+import { MathInline, MathBlock } from "../../../components/shared/math";
 import { Highlight } from "../../../components/shared/highlight";
 import { FlowDiagram } from "../../../components/shared/flowDiagram";
 
@@ -15,6 +15,7 @@ import {
   different_type_of_functions_nodes,
   different_type_of_functions_edges,
 } from "../assets/different_type_of_functions";
+import dataRepresentationImg from "../../../assets/data_representation.png";
 
 const What_is_ML_Page: Page = () => (
   <ContentLayout
@@ -28,6 +29,7 @@ const What_is_ML_Page: Page = () => (
         color: "#0a2f41",
         lineHeight: 1.6,
         margin: 0,
+        width: "85%",
       }}
     >
       Machine learning is a subset of artificial intelligence that involves
@@ -84,7 +86,10 @@ const Different_type_of_functions_Page: Page = () => (
       />
     }
     bottomContent={
-      <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
+      <div
+        className="ac-fadeIn"
+        style={{ animationDelay: "0.2s", position: "relative", top: "-60px" }}
+      >
         <Callout type="warning" title="Structured Learning">
           Create something with structure, e.g. image.
         </Callout>
@@ -138,8 +143,88 @@ const Different_type_of_functions_Page: Page = () => (
   </ContentWithImgLayout>
 );
 
+const Model_Page: Page = () => (
+  <ContentLayout
+    eyebrow="Section 1: Introduction to Machine Learning"
+    title="Machine Learning Model"
+  >
+    <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
+      <MathBlock math="y = f_w(\phi(x)) \triangleq \sigma(w^T \phi(x)), \text{ where } \sigma(s) = \frac{1}{1+e^{-s}}" />
+    </div>
+    <ul
+      className="ac-fadeIn"
+      style={{
+        fontSize: 28,
+        color: "#555",
+        lineHeight: 1.8,
+        margin: 0,
+        paddingLeft: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          <MathInline math="\boldsymbol{x}" />
+        </strong>
+        {": "}
+        Original data.
+      </li>
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          <MathInline math="\boldsymbol{\phi(x)}" />
+        </strong>
+        {": "}
+        Data representation of original data, make data points splitting easily.
+      </li>
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          <MathInline math="\boldsymbol{y \in (0, 1)}" />
+        </strong>
+        {": "}
+        Model prediction with parameter <MathInline math="w" />.
+      </li>
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          <MathInline math="\boldsymbol{t \in 0, 1}" />
+        </strong>
+        {": "}
+        Ground-truth.
+      </li>
+    </ul>
+  </ContentLayout>
+);
+
+const Data_Representation_Page: Page = () => (
+  <ContentWithImgLayout
+    eyebrow="Section 1: Introduction to Machine Learning"
+    title="Why Data Representation Matters?"
+    textFlex={0}
+    imgFlex={4}
+    imageNode={
+      <img
+        src={dataRepresentationImg}
+        alt="Data Representation"
+        style={{
+          width: "90%",
+          borderRadius: 16,
+          objectFit: "cover",
+          position: "relative",
+          left: "-150px",
+          top: "-70px",
+        }}
+      />
+    }
+  >
+    <div />
+  </ContentWithImgLayout>
+);
+
 export const section1Slides: Page[] = [
   createSectionSlide(0, sectionData),
   What_is_ML_Page,
   Different_type_of_functions_Page,
+  Model_Page,
+  Data_Representation_Page,
 ];

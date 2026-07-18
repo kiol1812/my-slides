@@ -95,6 +95,7 @@ const Define_Loss_from_Training_Data: Page = () => (
         color: "#555",
         lineHeight: 1.6,
         margin: 0,
+        width: "90%",
       }}
     >
       Calculate the gap, called <MathInline math="e_n" />, which between predict
