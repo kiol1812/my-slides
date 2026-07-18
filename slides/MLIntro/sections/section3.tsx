@@ -20,6 +20,11 @@ import { Plot, Line, Theme } from "mafs";
 
 import { sectionData } from "../meta";
 
+import networkImg from "../assets/network.png";
+import { label_edges, label_nodes } from "../assets/loss";
+import batchImg from "../assets/batch.png";
+import multiLayerImg from "../assets/multi-layer.png";
+
 const Unlinear_Function_Page: Page = () => (
   <ContentLayout eyebrow="Section 3: Unlinear Model" title="Unlinear Function">
     <p
@@ -189,9 +194,261 @@ const Sum_of_Sigmoid_Page: Page = () => (
   </ContentLayout>
 );
 
+const Organize_a_Function2_Page: Page = () => (
+  <ContentLayout
+    eyebrow="Section 3: Unlinear Model"
+    title="Organize a Function"
+  >
+    <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
+      <MathBlock math="\begin{align*}y &= b + \sum_jw_jx_j \\ y &= b + \sum_i \color{brown}c_i \color{black} \mathbb{sigmoid}(\color{seagreen}b_i\color{black}+\sum_j\color{royalblue}w_{ij}\color{black}x_j)\end{align*}" />
+    </div>
+  </ContentLayout>
+);
+
+const Organize_a_Function3_Page: Page = () => (
+  <ContentLayout
+    eyebrow="Section 3: Unlinear Model"
+    title="Organize a Function"
+  >
+    <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
+      <MathBlock math="y = b + \sum_i \color{brown}c_i \color{black} \mathbb{sigmoid}(\color{seagreen}b_i\color{black}+\sum_j\color{royalblue}w_{ij}\color{black}x_j)" />
+    </div>
+    <div
+      className="ac-fadeIn"
+      style={{ animationDelay: "0.2s", position: "relative", top: "-160px" }}
+    >
+      <MathBlock math="\begin{bmatrix}r_1\\r_2\\r_3\end{bmatrix} = \begin{bmatrix}\color{seagreen}b_1\\\color{seagreen}b_2\\\color{seagreen}b_3\end{bmatrix} + \begin{bmatrix}\color{royalblue}w_11 & \color{royalblue}w_12 & \color{royalblue}w_13 \\\color{royalblue}w_21 & \color{royalblue}w_22 & \color{royalblue}w_23 \\\color{royalblue}w_31 & \color{royalblue}w_32 & \color{royalblue}w_33 \\ \end{bmatrix}\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}" />
+    </div>
+  </ContentLayout>
+);
+
+const Organize_a_Function4_Page: Page = () => (
+  <ContentWithImgLayout
+    eyebrow="Section 3: Unlinear Model"
+    title="Organize a Function"
+    textFlex={1}
+    imgFlex={4}
+    imageNode={
+      <img
+        src={networkImg}
+        alt="Data Representation"
+        style={{
+          width: "75%",
+          borderRadius: 16,
+          objectFit: "cover",
+          position: "relative",
+          left: "-150px",
+          top: "-70px",
+        }}
+      />
+    }
+  >
+    <ul
+      className="ac-fadeIn"
+      style={{
+        fontSize: 28,
+        color: "#555",
+        lineHeight: 1.8,
+        margin: 0,
+        paddingLeft: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          <MathInline math="\boldsymbol{a_n = \sigma{(r_n)}}" />
+        </strong>
+      </li>
+      <li>Left b, gray one, is a constant.</li>
+      <li>Right b, green one, is a vector.</li>
+    </ul>
+  </ContentWithImgLayout>
+);
+
+const Loss_Page: Page = () => (
+  <ContentLayout eyebrow="Section 3: Unlinear Model" title="Loss">
+    <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
+      <MathBlock math="y = b + \vec{c}^T \sigma{(\vec{b}+\vec{\vec{W}}\vec{x})}" />
+    </div>
+    <ul
+      className="ac-fadeIn"
+      style={{
+        fontSize: 28,
+        color: "#555",
+        lineHeight: 1.8,
+        margin: 0,
+        paddingLeft: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          <MathInline math="\boldsymbol{x}" /> is feature.
+        </strong>
+      </li>
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          <MathInline math="\boldsymbol{W, \vec{b}, c^T, b}" /> is unknown
+          parameters. Let{" "}
+          <MathInline math="\theta = \begin{bmatrix}\theta_1 & \theta_2 & \cdots\end{bmatrix}" />{" "}
+          represent a set of unknown parameters.
+        </strong>
+      </li>
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          Loss is a function of parameters{" "}
+          <MathInline math="\boldsymbol{L(\theta)}" />. It means{" "}
+          <Highlight>how good a set of values is</Highlight>.
+        </strong>
+      </li>
+    </ul>
+  </ContentLayout>
+);
+
+const Loss2_Page: Page = () => (
+  <ContentWithImgLayout
+    eyebrow="Section 3: Unlinear Model"
+    title="Loss"
+    textFlex={2}
+    imgFlex={1}
+    imageNode={<FlowDiagram nodes={label_nodes} edges={label_edges} />}
+  >
+    <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
+      <MathBlock math="y = b + \vec{c}^T \sigma{(\vec{b}+\vec{\vec{W}}\vec{x})}" />
+    </div>
+    <div
+      className="ac-fadeIn"
+      style={{ animationDelay: "0.2s", position: "relative", top: "-120px" }}
+    >
+      <MathBlock math="L = \frac{1}{N}\sum_n e_n" />
+    </div>
+  </ContentWithImgLayout>
+);
+
+const Optimization_of_New_Model_Page: Page = () => (
+  <ContentLayout
+    eyebrow="Section 3: Unlinear Model"
+    title="Optimization of New Model"
+  >
+    <ul
+      className="ac-fadeIn"
+      style={{
+        fontSize: 28,
+        color: "#555",
+        lineHeight: 1.8,
+        margin: 0,
+        paddingLeft: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          <MathInline math="\boldsymbol{\theta^* = arg \min_\theta L}" />
+        </strong>
+      </li>
+      <li>
+        Randomly pick initial values <MathInline math="\theta^0" />
+      </li>
+    </ul>
+    <div
+      className="ac-fadeIn"
+      style={{ animationDelay: "0.2s", position: "relative", top: "-40px" }}
+    >
+      <MathBlock
+        math="\begin{align*}\text{gradient } g &= \begin{bmatrix}
+\frac{\partial L}{\partial \theta_1} \Big|_{\theta=\theta^0} \\ 
+\frac{\partial L}{\partial \theta_2} \Big|_{\theta=\theta^0} \\ 
+\vdots 
+\end{bmatrix} \text{ , } \begin{bmatrix}\theta^1_1 \\ \theta^1_2 \\ \vdots \end{bmatrix} \leftarrow \begin{bmatrix}\theta^0_1 \\ \theta^0_2 \\ \vdots \end{bmatrix} - \begin{bmatrix}
+\color{brown}\eta\color{black}\frac{\partial L}{\partial \theta_1} \Big|_{\theta=\theta^0} \\ 
+\color{brown}\eta\color{black}\frac{\partial L}{\partial \theta_2} \Big|_{\theta=\theta^0} \\ 
+\vdots 
+\end{bmatrix} \\
+        g &= \bigtriangledown L(\theta^0) \text{ , } \theta^1 \leftarrow \theta^0 - \color{brown}\eta \color{black}g\end{align*}"
+      />
+    </div>
+  </ContentLayout>
+);
+
+const Batch_Page: Page = () => (
+  <ContentWithImgLayout
+    eyebrow="Section 3: Unlinear Model"
+    title="Batch"
+    textFlex={0}
+    imgFlex={4}
+    imageNode={
+      <img
+        src={batchImg}
+        alt="Data Representation"
+        style={{
+          width: "75%",
+          borderRadius: 16,
+          objectFit: "cover",
+          position: "relative",
+          left: "-150px",
+          top: "-70px",
+        }}
+      />
+    }
+  >
+    <div />
+  </ContentWithImgLayout>
+);
+
+const Activation_Function_Page: Page = () => (
+  <ContentLayout
+    eyebrow="Section 3: Unlinear Model"
+    title="Activation Function"
+  >
+    <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
+      <MathBlock math="\begin{align*}&\text{Sigmoid }&& \frac{1}{1+e^{-(b+wx_1)}} \\ \\ &\text{Rectified Linear Unit, ReLU }&& c \max{(0, b+wx_1)} \end{align*}" />
+    </div>
+  </ContentLayout>
+);
+
+const Multi_Layer_Page: Page = () => (
+  <ContentWithImgLayout
+    eyebrow="Section 3: Unlinear Model"
+    title="Multi-layer"
+    textFlex={0}
+    imgFlex={4}
+    imageNode={
+      <img
+        src={multiLayerImg}
+        alt="Data Representation"
+        style={{
+          width: "70%",
+          borderRadius: 16,
+          objectFit: "cover",
+          position: "relative",
+          left: "-150px",
+          top: "-70px",
+        }}
+      />
+    }
+  >
+    <div />
+  </ContentWithImgLayout>
+);
+
 export const section3Slides: Page[] = [
   createSectionSlide(2, sectionData),
   Unlinear_Function_Page,
   Sigmoid_Page,
   Sum_of_Sigmoid_Page,
+  Organize_a_Function2_Page,
+  Organize_a_Function3_Page,
+  Organize_a_Function4_Page,
+  Loss_Page,
+  Loss2_Page,
+  Optimization_of_New_Model_Page,
+  Batch_Page,
+  Activation_Function_Page,
+  Multi_Layer_Page,
 ];

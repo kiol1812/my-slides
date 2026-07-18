@@ -15,7 +15,7 @@ import {
   different_type_of_functions_nodes,
   different_type_of_functions_edges,
 } from "../assets/different_type_of_functions";
-import dataRepresentationImg from "../../../assets/data_representation.png";
+import dataRepresentationImg from "../assets/data_representation.png";
 
 const What_is_ML_Page: Page = () => (
   <ContentLayout
