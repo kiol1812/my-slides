@@ -15,80 +15,11 @@ import { FlowDiagram } from "../../../components/shared/flowDiagram";
 
 import { sectionData } from "../meta";
 
-const NeuralNetworkPage: Page = () => (
+const Function_with_Unknow_Paramters: Page = () => (
   <ContentLayout
-    eyebrow="Section 2: Deep Learning"
-    title="Neural Networks Basics"
+    eyebrow="Section 2: Linear Model"
+    title="Function with Unknow Parameters"
   >
-    <p
-      className="ac-fadeIn"
-      style={{
-        fontSize: 32,
-        color: "#0a2f41",
-        lineHeight: 1.6,
-        margin: 0,
-      }}
-    >
-      Neural networks reflect the behavior of the human brain, allowing computer
-      programs to recognize patterns and solve common problems in the fields of
-      AI.
-    </p>
-
-    <div
-      className="ac-fadeIn"
-      style={{ display: "flex", gap: 30, marginTop: 20 }}
-    >
-      <div
-        style={{
-          flex: 1,
-          padding: 30,
-          background: "#f8f9fa",
-          borderRadius: 12,
-        }}
-      >
-        <h3 style={{ fontSize: 28, color: "#0a2f41", margin: "0 0 16px 0" }}>
-          Input Layer
-        </h3>
-        <p style={{ fontSize: 24, color: "#555", margin: 0, lineHeight: 1.5 }}>
-          Receives initial data for the neural network to process.
-        </p>
-      </div>
-      <div
-        style={{
-          flex: 1,
-          padding: 30,
-          background: "#f8f9fa",
-          borderRadius: 12,
-        }}
-      >
-        <h3 style={{ fontSize: 28, color: "#0a2f41", margin: "0 0 16px 0" }}>
-          Hidden Layers
-        </h3>
-        <p style={{ fontSize: 24, color: "#555", margin: 0, lineHeight: 1.5 }}>
-          Performs computations and extracts features from the data.
-        </p>
-      </div>
-      <div
-        style={{
-          flex: 1,
-          padding: 30,
-          background: "#f8f9fa",
-          borderRadius: 12,
-        }}
-      >
-        <h3 style={{ fontSize: 28, color: "#0a2f41", margin: "0 0 16px 0" }}>
-          Output Layer
-        </h3>
-        <p style={{ fontSize: 24, color: "#555", margin: 0, lineHeight: 1.5 }}>
-          Delivers the final prediction or classification result.
-        </p>
-      </div>
-    </div>
-  </ContentLayout>
-);
-
-const MathDemoPage: Page = () => (
-  <ContentLayout eyebrow="Section 2: Deep Learning" title="Forward Propagation">
     <p
       className="ac-fadeIn"
       style={{
@@ -98,203 +29,206 @@ const MathDemoPage: Page = () => (
         margin: 0,
       }}
     >
-      In a basic neural network, the output of a neuron is calculated using a
-      linear transformation followed by an activation function. Let weights be{" "}
-      <MathInline math="W" />, inputs be <MathInline math="x" />, and bias be{" "}
+      Form a function based on domain knowledge, e.g.
+    </p>
+
+    <MathBlock math="y = f_{\theta}(x) = b + Wx_1" />
+
+    <p
+      className="ac-fadeIn"
+      style={{
+        fontSize: 32,
+        color: "#555",
+        lineHeight: 1.6,
+        margin: 0,
+      }}
+    >
+      then, we called <MathInline math="f_{\theta}(x)" /> by{" "}
+      <Highlight>
+        <strong style={{ color: "#0a2f41" }}>model</strong>
+      </Highlight>{" "}
+      with{" "}
+      <Highlight>
+        <strong style={{ color: "#0a2f41" }}>feature</strong>
+      </Highlight>{" "}
+      <MathInline math="x_1" />,{" "}
+      <Highlight>
+        <strong style={{ color: "#0a2f41" }}>weight</strong>
+      </Highlight>{" "}
+      <MathInline math="W" /> and{" "}
+      <Highlight>
+        <strong style={{ color: "#0a2f41" }}>bias</strong>
+      </Highlight>{" "}
       <MathInline math="b" />.
     </p>
-
-    {/* 區塊公式：呈現主要的數學模型 */}
-    <MathBlock math="z = W \cdot x + b" />
-
-    <p
-      className="ac-fadeIn"
-      style={{
-        fontSize: 32,
-        color: "#555",
-        lineHeight: 1.6,
-        margin: 0,
-      }}
-    >
-      We then apply a non-linear activation function, such as the Sigmoid
-      function, to introduce non-linearity into the model:
-    </p>
-
-    {/* 區塊公式：呈現複雜的分數與指數 */}
-    <MathBlock math="\sigma(z) = \frac{1}{1 + e^{-z}}" />
   </ContentLayout>
 );
 
-const gradientDescentCode = `
-def gradient_descent(x, y, lr=0.01, epochs=1000):
-    w, b = 0.0, 0.0
-    n = len(x)
-    
-    for _ in range(epochs):
-        y_pred = w * x + b
-        
-        # Calculate gradients
-        dw = (2/n) * sum(x * (y_pred - y))
-        db = (2/n) * sum(y_pred - y)
-        
-        # Update weights
-        w = w - lr * dw
-        b = b - lr * db
-        
-    return w, b
-`.trim();
-
-const GradientDescentPage: Page = () => (
+const Define_Loss_from_Training_Data: Page = () => (
   <ContentLayout
-    eyebrow={
-      <div style={{ display: "flex", alignItems: "center" }}>
-        Section 3: Optimization <Badge>Live Code</Badge>
-      </div>
-    }
-    title="Implementing Gradient Descent"
+    eyebrow="Section 2: Linear Model"
+    title="Define Loss from Training Data"
   >
-    {/* 1. 概念解說區塊，使用 Highlight 強調關鍵字 */}
-    <p
-      className="ac-fadeIn"
-      style={{
-        fontSize: 32,
-        color: "#0a2f41",
-        lineHeight: 1.6,
-        margin: 0,
-      }}
-    >
-      The core mechanism of learning is <Highlight>Gradient Descent</Highlight>.
-      By calculating the partial derivative of the Loss function with respect to
-      each weight, we take steps proportional to the negative of the gradient to
-      find the local minimum.
-    </p>
-
-    {/* 2. 程式碼區塊 */}
-    <div className="ac-fadeIn">
-      <CodeBlock code={gradientDescentCode} language="python" />
-    </div>
-
-    {/* 3. 提示區塊，使用 Callout 提醒常犯錯誤，並結合 MathInline 標示數學符號 */}
-    <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
-      <Callout type="warning" title="Watch your Learning Rate (lr)">
-        Setting the learning rate <MathInline math="\alpha" /> too high can
-        cause the algorithm to overshoot the minimum and diverge (loss becomes
-        NaN). Setting it too low will make the training process painfully slow.
-      </Callout>
-    </div>
-  </ContentLayout>
-);
-
-// 定義節點 (注意 data.label 裡面可以直接放 JSX / React 元件)
-const initialNodes = [
-  {
-    id: "1",
-    type: "custom",
-    position: { x: 0, y: 0 },
-    data: {
-      label: (
-        <span>
-          Input <MathInline math="X" />
-        </span>
-      ),
-    },
-  },
-  {
-    id: "2",
-    type: "custom",
-    position: { x: 0, y: 150 },
-    data: {
-      label: (
-        <span>
-          Linear <MathInline math="z = WX + b" />
-        </span>
-      ),
-      highlight: true,
-    },
-  },
-  {
-    id: "3",
-    type: "custom",
-    position: { x: 0, y: 300 },
-    data: {
-      label: (
-        <span>
-          Activation <MathInline math="a = \sigma(z)" />
-        </span>
-      ),
-    },
-  },
-];
-
-// 定義連線 (帶有動畫的箭頭)
-const initialEdges = [
-  {
-    id: "e1-2",
-    source: "1",
-    target: "2",
-    animated: true,
-    style: { stroke: "#7c9fa8", strokeWidth: 3 },
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-      width: 20,
-      height: 20,
-      color: "#7c9fa8",
-    },
-  },
-  {
-    id: "e2-3",
-    source: "2",
-    target: "3",
-    animated: true,
-    style: { stroke: "#7c9fa8", strokeWidth: 3 },
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-      width: 20,
-      height: 20,
-      color: "#7c9fa8",
-    },
-  },
-];
-
-const ForwardPropPage: Page = () => (
-  <ContentWithImgLayout
-    eyebrow="Section 2: Deep Learning"
-    title="Forward Propagation Pipeline"
-    textFlex={1}
-    imgFlex={1.5} // 讓圖表區塊大一點
-    // 將 FlowDiagram 直接作為 imageNode 傳入右側
-    imageNode={<FlowDiagram nodes={initialNodes} edges={initialEdges} />}
-  >
-    <p style={{ fontSize: 32, color: "#555", lineHeight: 1.6 }}>
-      The data flows through the network in a distinct sequence.
-    </p>
     <ul
+      className="ac-fadeIn"
       style={{
         fontSize: 28,
         color: "#555",
         lineHeight: 1.8,
+        margin: 0,
+        paddingLeft: 40,
         display: "flex",
         flexDirection: "column",
         gap: 16,
       }}
     >
       <li>
-        <strong>Input:</strong> Raw data features are fed into the network.
+        <strong style={{ color: "#0a2f41" }}>Loss</strong> is a function of
+        parameters, e.g. <MathInline math="L(b, W)" />.
+      </li>
+      <li>Loss will tell how good a set of value is.</li>
+    </ul>
+    <p
+      className="ac-fadeIn"
+      style={{
+        fontSize: 32,
+        color: "#555",
+        lineHeight: 1.6,
+        margin: 0,
+        width: "90%",
+      }}
+    >
+      Calculate the gap, called <MathInline math="e_n" />, which between predict
+      value <MathInline math="y" /> and ground true{" "}
+      <MathInline math="\hat{y}" />. Ground true is also called by
+      <Highlight>
+        <strong style={{ color: "#0a2f41" }}>label</strong>
+      </Highlight>
+      .
+    </p>
+    <MathBlock math="L = \frac{1}{N}\sum_n{e_n}" />
+  </ContentLayout>
+);
+
+const Loss_Functions: Page = () => (
+  <ContentLayout eyebrow="Section 2: Linear Model" title="Loss functions">
+    <MathBlock math="L = \frac{1}{N}\sum_n{e_n}" />
+    <ul
+      className="ac-fadeIn"
+      style={{
+        fontSize: 28,
+        color: "#555",
+        lineHeight: 1.8,
+        margin: 0,
+        paddingLeft: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
+      <li>
+        <Highlight>
+          <strong style={{ color: "#0a2f41" }}>Mean Absolute Error, MAE</strong>
+        </Highlight>
+        : <MathInline math="e=|y-\hat{y}|" />
       </li>
       <li>
-        <strong>Linear:</strong> Weights and biases are applied.
+        <Highlight>
+          <strong style={{ color: "#0a2f41" }}>Mean Square Error, MSE</strong>
+        </Highlight>
+        : <MathInline math="e=(y-\hat{y})^2" />
       </li>
       <li>
-        <strong>Activation:</strong> Non-linearity is introduced.
+        The choice of loss functuin depends on the requirements of the task and
+        relies on the designer's understanding of the problem. (
+        <Highlight> Domain Knowledge</Highlight>)
       </li>
     </ul>
-  </ContentWithImgLayout>
+  </ContentLayout>
+);
+
+const Optimization: Page = () => (
+  <ContentLayout eyebrow="Section 2: Linear Model" title="Optimization">
+    <MathBlock math="w^*, b^* = arg\min_{w,b}{L}" />
+    <p
+      className="ac-fadeIn"
+      style={{
+        fontSize: 32,
+        color: "#555",
+        lineHeight: 1.6,
+        margin: 0,
+      }}
+    >
+      Find an set of weights and bias to make loss to be minimum. It can be
+      finded through{" "}
+      <Highlight>
+        <strong style={{ color: "#0a2f41" }}>Gradient Desent</strong>
+      </Highlight>
+      .
+    </p>
+  </ContentLayout>
+);
+
+const OptimizationSteps: Page = () => (
+  <ContentLayout eyebrow="Section 2: Linear Model" title="Optimization Steps">
+    <ul
+      className="ac-fadeIn"
+      style={{
+        fontSize: 28,
+        color: "#555",
+        lineHeight: 1.8,
+        margin: 0,
+        paddingLeft: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
+      <li>
+        Pick an initial value <MathInline math="W^0" /> (Randomly).
+      </li>
+      <li>
+        Compute <MathInline math="\frac{\partial{L}}{\partial{w}}|_{w=w^0}" />:
+        if negative then increase <MathInline math="W" />; if positive then
+        decrease <MathInline math="W" />.
+      </li>
+      <li>
+        Update weights. To determine how long the weights needed to update, it's
+        rely on hyprparameters{" "}
+        <MathInline math="\eta \frac{\partial{L}}{\partial{w}}|_{w=w^0}" />.{" "}
+        <Highlight>
+          <MathInline math="\eta" />
+        </Highlight>{" "}
+        is called by <Highlight>learning rate</Highlight>.
+      </li>
+    </ul>
+    <MathBlock math="w^1 \leftarrow w^0-\eta\frac{\partial{L}}{\partial{w}}|_{w=w^0}" />
+    <ul
+      className="ac-fadeIn"
+      style={{
+        fontSize: 28,
+        color: "#555",
+        lineHeight: 1.8,
+        margin: 0,
+        paddingLeft: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
+      <li>
+        Update weights iteratively and ended when reach maximum of steps or when
+        gradient is <MathInline math="\to 0" />.
+      </li>
+    </ul>
+  </ContentLayout>
 );
 
 export const section2Slides: Page[] = [
   createSectionSlide(1, sectionData),
-  NeuralNetworkPage,
-  MathDemoPage,
-  GradientDescentPage,
-  ForwardPropPage,
+  Function_with_Unknow_Paramters,
+  Define_Loss_from_Training_Data,
+  Loss_Functions,
+  Optimization,
+  OptimizationSteps,
 ];
