@@ -17,4 +17,8 @@ export const sectionData: SectionItem[] = [
     title: "Backpropagation",
     subtitle: "",
   },
+  {
+    title: "Machine Learning Task",
+    subtitle: "",
+  },
 ];
