@@ -13,4 +13,8 @@ export const sectionData: SectionItem[] = [
     title: "Unlinear Model",
     subtitle: "",
   },
+  {
+    title: "Backpropagation",
+    subtitle: "",
+  },
 ];
