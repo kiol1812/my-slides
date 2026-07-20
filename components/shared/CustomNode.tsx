@@ -16,8 +16,6 @@ export const CustomNode = ({ id, data }: { id: string; data: any }) => {
         position={targetPos}
         style={{
           background: "#7c9fa8",
-          top: data.top || "50%",
-          left: data.left || "50%",
           opacity: 0,
         }}
       />
@@ -56,10 +54,6 @@ export const CustomNode = ({ id, data }: { id: string; data: any }) => {
         position={sourcePos}
         style={{
           background: "#7c9fa8",
-          top:
-            targetPos == Position.Left || targetPos == Position.Right
-              ? "75%"
-              : "0%",
           opacity: 0,
         }}
       />

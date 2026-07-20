@@ -4,7 +4,7 @@ import { Position, MarkerType } from "@xyflow/react";
 // 定義節點 (注意 data.label 裡面可以直接放 JSX / React 元件)
 export const label_nodes = [
   {
-    id: "0",
+    id: "1",
     type: "custom",
     position: { x: 100, y: 20 },
     data: {
@@ -18,20 +18,6 @@ export const label_nodes = [
       top: "0%",
       left: "100%",
       width: "50px",
-    },
-  },
-  {
-    id: "1",
-    type: "custom",
-    position: { x: 110, y: 90 },
-    data: {
-      targetPosition: Position.Bottom,
-      sourcePosition: Position.Bottom,
-      top: "0%",
-      left: "100%",
-      width: "50px",
-      erase_bg: true,
-      erase_border: true,
     },
   },
   {

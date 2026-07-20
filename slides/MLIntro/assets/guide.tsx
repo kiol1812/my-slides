@@ -9,20 +9,21 @@ export const guide_nodes = [
     data: {
       label: "Loss on training data",
       targetPosition: Position.Top,
-      sourcePosition: Position.Bottom,
+      sourcePosition: Position.Left,
       width: "150px",
       height: "120px",
     },
   },
   {
-    id: "1_o",
+    id: "1_r",
     type: "custom",
-    position: { x: 400, y: 50 },
+    position: { x: 350, y: 0 },
     data: {
+      label: "Loss on training data",
       targetPosition: Position.Top,
-      sourcePosition: Position.Bottom,
-      erase_bg: true,
-      erase_border: true,
+      sourcePosition: Position.Right,
+      width: "150px",
+      height: "120px",
     },
   },
   {
@@ -31,10 +32,20 @@ export const guide_nodes = [
     position: { x: 200, y: 100 },
     data: {
       targetPosition: Position.Top,
-      sourcePosition: Position.Bottom,
-      width: "50px",
-      erase_bg: true,
-      erase_border: true,
+      sourcePosition: Position.Left,
+      width: "30px",
+      height: "30px",
+    },
+  },
+  {
+    id: "2_r",
+    type: "custom",
+    position: { x: 200, y: 100 },
+    data: {
+      targetPosition: Position.Right,
+      sourcePosition: Position.Right,
+      width: "30px",
+      height: "30px",
     },
   },
   {
@@ -44,22 +55,21 @@ export const guide_nodes = [
     data: {
       label: "Loss on testing data",
       targetPosition: Position.Top,
-      sourcePosition: Position.Bottom,
+      sourcePosition: Position.Left,
       width: "150px",
       height: "120px",
     },
   },
   {
-    id: "3_o",
+    id: "3_r",
     type: "custom",
-    position: { x: 700, y: 150 },
+    position: { x: 600, y: 100 },
     data: {
+      label: "Loss on testing data",
       targetPosition: Position.Top,
-      sourcePosition: Position.Bottom,
+      sourcePosition: Position.Right,
       width: "150px",
       height: "120px",
-      erase_bg: true,
-      erase_border: true,
     },
   },
   {
@@ -72,17 +82,6 @@ export const guide_nodes = [
       sourcePosition: Position.Bottom,
       width: "150px",
       height: "120px",
-    },
-  },
-  {
-    id: "4_o",
-    type: "custom",
-    position: { x: 100, y: 250 },
-    data: {
-      targetPosition: Position.Top,
-      sourcePosition: Position.Bottom,
-      erase_bg: true,
-      erase_border: true,
     },
   },
   {
@@ -99,13 +98,12 @@ export const guide_nodes = [
   {
     id: "6",
     type: "custom",
-    position: { x: 500, y: 200 },
+    position: { x: 500, y: 230 },
     data: {
       targetPosition: Position.Top,
       sourcePosition: Position.Bottom,
-      width: "50px",
-      erase_bg: true,
-      erase_border: true,
+      width: "30px",
+      height: "30px",
     },
   },
   {
@@ -126,6 +124,18 @@ export const guide_nodes = [
     data: {
       label: "Mode training data, Data augmentation, Make model simpler",
       targetPosition: Position.Top,
+      sourcePosition: Position.Bottom,
+      width: "300px",
+      height: "120px",
+    },
+  },
+  {
+    id: "8_l",
+    type: "custom",
+    position: { x: 225, y: 350 },
+    data: {
+      label: "Mode training data, Data augmentation, Make model simpler",
+      targetPosition: Position.Left,
       sourcePosition: Position.Bottom,
       width: "300px",
       height: "120px",
@@ -175,7 +185,7 @@ export const guide_edges = [
   },
   {
     id: "e1-3",
-    source: "1_o",
+    source: "1_r",
     target: "3",
     type: "straight",
     animated: true,
@@ -207,7 +217,7 @@ export const guide_edges = [
   },
   {
     id: "e2-5",
-    source: "2",
+    source: "2_r",
     target: "5",
     type: "straight",
     animated: true,
@@ -239,7 +249,7 @@ export const guide_edges = [
   },
   {
     id: "e3-7",
-    source: "3_o",
+    source: "3_r",
     target: "7",
     type: "straight",
     animated: true,
@@ -287,17 +297,23 @@ export const guide_edges = [
   },
   {
     id: "e4-8",
-    source: "4_o",
-    target: "8",
+    source: "4",
+    target: "8_l",
     animated: true,
     label: "trade-off",
     labelStyle: { fill: "#c14a38", fontWeight: 700, fontSize: "20px" },
     style: { stroke: "#c14a38", strokeWidth: 3 },
+    markerStart: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#c14a38",
+    },
     markerEnd: {
       type: MarkerType.ArrowClosed,
       width: 20,
       height: 20,
-      color: "#7c9fa8",
+      color: "#c14a38",
     },
   },
 ];

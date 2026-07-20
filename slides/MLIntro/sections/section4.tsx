@@ -1,7 +1,4 @@
 import { type Page } from "@open-slide/core";
-import { MarkerType } from "@xyflow/react";
-
-import React, { useState } from "react";
 
 import {
   ContentLayout,
@@ -9,18 +6,12 @@ import {
 } from "../../../components/academic/content";
 import { createSectionSlide } from "../../../components/academic/section";
 import { MathInline, MathBlock } from "../../../components/shared/math";
-import { CodeBlock } from "../../../components/shared/codeBlock";
 import { Callout } from "../../../components/shared/callout";
 import { Highlight } from "../../../components/shared/highlight";
-import { Badge } from "../../../components/shared/badge";
 import { FlowDiagram } from "../../../components/shared/flowDiagram";
-import { MathDiagram } from "../../../components/shared/mathDiagram";
-
-import { Plot, Line, Theme } from "mafs";
 
 import { sectionData } from "../meta";
 
-import networkImg from "../assets/network.png";
 import { chain_nodes, chain_edges } from "../assets/chain_rule";
 import {
   bp_nodes,
@@ -28,7 +19,6 @@ import {
   bp2_nodes,
   bp2_edges,
 } from "../assets/backpropagation";
-import multiLayerImg from "../assets/multi-layer.png";
 
 const Gradient_Descent_Page: Page = () => (
   <ContentLayout eyebrow="Section 4: Backpropagation" title="Gradient Descent">
