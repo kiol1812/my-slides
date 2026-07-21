@@ -21,4 +21,8 @@ export const sectionData: SectionItem[] = [
     title: "Machine Learning Task",
     subtitle: "",
   },
+  {
+    title: "Local Minima or Saddle Point",
+    subtitle: "",
+  },
 ];
