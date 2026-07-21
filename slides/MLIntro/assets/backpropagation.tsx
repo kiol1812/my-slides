@@ -229,19 +229,33 @@ export const bp2_nodes = [
     },
   },
   {
-    id: "6",
+    id: "6_1",
     type: "custom",
-    position: { x: 500, y: 0 },
+    position: { x: 550, y: 0 },
     data: {
       label: (
         <span>
-          <MathInline math="\begin{matrix}\vdots \\ \vdots \\ \vdots \\ \vdots \end{matrix}" />
+          <MathInline math="+" />
         </span>
       ),
       targetPosition: Position.Left,
       sourcePosition: Position.Right,
-      height: "200px",
-      width: "120px",
+      width: "80px",
+    },
+  },
+  {
+    id: "6_2",
+    type: "custom",
+    position: { x: 550, y: 100 },
+    data: {
+      label: (
+        <span>
+          <MathInline math="+" />
+        </span>
+      ),
+      targetPosition: Position.Left,
+      sourcePosition: Position.Right,
+      width: "80px",
     },
   },
   {
@@ -396,12 +410,12 @@ export const bp2_edges = [
     },
   },
   {
-    id: "e5-6",
+    id: "e5-6_1",
     source: "5",
-    target: "6",
+    target: "6_1",
     type: "straight",
     animated: true,
-    label: "a",
+    label: "a,w_3",
     labelStyle: { fill: "#7c9fa8", fontWeight: 700, fontSize: "20px" },
     style: { stroke: "#7c9fa8", strokeWidth: 3 },
     markerEnd: {
@@ -412,12 +426,44 @@ export const bp2_edges = [
     },
   },
   {
-    id: "e6-7",
-    source: "6",
+    id: "e5-6_2",
+    source: "5",
+    target: "6_2",
+    type: "straight",
+    animated: true,
+    label: "w_4",
+    labelStyle: { fill: "#7c9fa8", fontWeight: 700, fontSize: "20px" },
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e6_1-7",
+    source: "6_1",
     target: "7",
     type: "straight",
     animated: true,
     label: "z'",
+    labelStyle: { fill: "#7c9fa8", fontWeight: 700, fontSize: "20px" },
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e6_2-9",
+    source: "6_2",
+    target: "9",
+    type: "straight",
+    animated: true,
+    label: "z''",
     labelStyle: { fill: "#7c9fa8", fontWeight: 700, fontSize: "20px" },
     style: { stroke: "#7c9fa8", strokeWidth: 3 },
     markerEnd: {
@@ -433,39 +479,6 @@ export const bp2_edges = [
     target: "8",
     type: "straight",
     animated: true,
-    label: "w_3",
-    labelStyle: { fill: "#7c9fa8", fontWeight: 700, fontSize: "20px" },
-    style: { stroke: "#7c9fa8", strokeWidth: 3 },
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-      width: 20,
-      height: 20,
-      color: "#7c9fa8",
-    },
-  },
-  {
-    id: "e7-10",
-    source: "7",
-    target: "10",
-    type: "straight",
-    animated: true,
-    label: "w_4",
-    labelStyle: { fill: "#7c9fa8", fontWeight: 700, fontSize: "20px" },
-    style: { stroke: "#7c9fa8", strokeWidth: 3 },
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-      width: 20,
-      height: 20,
-      color: "#7c9fa8",
-    },
-  },
-  {
-    id: "e6-9",
-    source: "6",
-    target: "9",
-    type: "straight",
-    animated: true,
-    label: "z''",
     labelStyle: { fill: "#7c9fa8", fontWeight: 700, fontSize: "20px" },
     style: { stroke: "#7c9fa8", strokeWidth: 3 },
     markerEnd: {
