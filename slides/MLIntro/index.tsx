@@ -11,6 +11,7 @@ import { section3Slides } from "./sections/section3";
 import { section4Slides } from "./sections/section4";
 import { section5Slides } from "./sections/section5";
 import { section6Slides } from "./sections/section6";
+import { section7Slides } from "./sections/section7";
 
 export const meta: SlideMeta = {
   title: "Machine Learning Intro",
@@ -25,4 +26,5 @@ export default [
   ...section4Slides,
   ...section5Slides,
   ...section6Slides,
+  ...section7Slides,
 ] satisfies Page[];

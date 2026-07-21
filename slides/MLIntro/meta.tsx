@@ -25,4 +25,9 @@ export const sectionData: SectionItem[] = [
     title: "Local Minima or Saddle Point",
     subtitle: "",
   },
+  {
+    title: "Optimization",
+    subtitle:
+      "Batch & Normalization & Monmentum & Adaptive Learning Rate & Loss",
+  },
 ];
