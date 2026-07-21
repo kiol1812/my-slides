@@ -433,7 +433,7 @@ const Considering_Deep_Learning2_Page: Page = () => (
 const Batch_Normalization3_Page: Page = () => (
   <ContentWithImgLayout
     eyebrow="Section 7: Optimization"
-    title="Normalization"
+    title="Batch Normalization"
     textFlex={0}
     imgFlex={4}
     imageNode={

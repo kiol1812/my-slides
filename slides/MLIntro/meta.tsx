@@ -3,7 +3,7 @@ import { SectionItem } from "../../components/academic/toc";
 export const sectionData: SectionItem[] = [
   {
     title: "Introduction to Machine Learning",
-    subtitle: "Basic concepts",
+    subtitle: "Basic Concepts",
   },
   {
     title: "Linear Model",
@@ -23,7 +23,7 @@ export const sectionData: SectionItem[] = [
   },
   {
     title: "Local Minima or Saddle Point",
-    subtitle: "",
+    subtitle: "Critical Point",
   },
   {
     title: "Optimization",
