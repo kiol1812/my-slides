@@ -13,4 +13,21 @@ export const sectionData: SectionItem[] = [
     title: "Unlinear Model",
     subtitle: "",
   },
+  {
+    title: "Backpropagation",
+    subtitle: "",
+  },
+  {
+    title: "Machine Learning Task",
+    subtitle: "",
+  },
+  {
+    title: "Local Minima or Saddle Point",
+    subtitle: "",
+  },
+  {
+    title: "Optimization",
+    subtitle:
+      "Batch & Normalization & Monmentum & Adaptive Learning Rate & Loss",
+  },
 ];
