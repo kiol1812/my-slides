@@ -433,7 +433,7 @@ const Considering_Deep_Learning2_Page: Page = () => (
 const Batch_Normalization3_Page: Page = () => (
   <ContentWithImgLayout
     eyebrow="Section 7: Optimization"
-    title="Normalization"
+    title="Batch Normalization"
     textFlex={0}
     imgFlex={4}
     imageNode={
@@ -689,18 +689,18 @@ export const section7Slides: Page[] = [
   Batch3_Page,
   Batch4_Page,
   Batch5_Page,
-  Batch_Normalization_Page,
-  Batch_Normalization2_Page,
-  Considering_Deep_Learning_Page,
-  Considering_Deep_Learning2_Page,
-  Batch_Normalization3_Page,
-  Batch_Normalization4_Page,
   Momentum_Page,
   Adaptive_Learning_Rate_Page,
+  Batch_Normalization_Page,
   Adaptive_Learning_Rate2_Page,
   Root_Mean_Square_Page,
   RMSProp_Page,
   RMSProp2_Page,
   Learning_Rate_Scheduling_Page,
   Summary_Page,
+  Batch_Normalization2_Page,
+  Batch_Normalization3_Page,
+  Considering_Deep_Learning_Page,
+  Considering_Deep_Learning2_Page,
+  Batch_Normalization4_Page,
 ];

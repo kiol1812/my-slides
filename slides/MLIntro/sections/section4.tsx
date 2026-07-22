@@ -73,7 +73,7 @@ const Chain_Rule_Page: Page = () => (
       Case II. <br />
       <MathInline math="x = g(s), y = h(s), z = k(x, y)" />
       <br />
-      <MathInline math="\frac{dz}{ds} = \frac{dz}{dx}\frac{dx}{ds} + \frac{dz}{dy}\frac{dy}{ds}" />
+      <MathInline math="\frac{dz}{ds} = \frac{\partial z}{\partial x}\frac{dx}{ds} + \frac{\partial z}{\partial y}\frac{dy}{ds}" />
     </p>
   </ContentWithImgLayout>
 );

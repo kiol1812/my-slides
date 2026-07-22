@@ -103,7 +103,7 @@ const Define_Loss_from_Training_Data: Page = () => (
 );
 
 const Loss_Functions: Page = () => (
-  <ContentLayout eyebrow="Section 2: Linear Model" title="Loss functions">
+  <ContentLayout eyebrow="Section 2: Linear Model" title="Loss Functions">
     <MathBlock math="L = \frac{1}{N}\sum_n{e_n}" />
     <ul
       className="ac-fadeIn"
