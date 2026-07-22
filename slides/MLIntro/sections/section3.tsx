@@ -21,6 +21,22 @@ import { label_edges, label_nodes } from "../assets/loss";
 import batchImg from "../assets/batch.png";
 import multiLayerImg from "../assets/multi-layer.png";
 
+const Sum_of_Sigmoid_Chart = () => (
+  <MathDiagram viewBox={{ x: [0, 3], y: [-1, 4] }} zoom={{ min: 0.1, max: 2 }}>
+    <Line.Segment point1={[-10, 1]} point2={[11, 1]} color={Theme.blue} />
+    <Line.Segment point1={[-10, 0]} point2={[5, 0]} color={Theme.blue} />
+    <Line.Segment point1={[0, 0]} point2={[3, 3]} color={Theme.blue} />
+    <Line.Segment point1={[3, 3]} point2={[11, 3]} color={Theme.blue} />
+    <Line.Segment point1={[3, 0]} point2={[5, -2]} color={Theme.blue} />
+    <Line.Segment point1={[5, -2]} point2={[11, -2]} color={Theme.blue} />
+    <Line.Segment point1={[5, 0]} point2={[9, 2]} color={Theme.blue} />
+    <Line.Segment point1={[9, 2]} point2={[11, 2]} color={Theme.blue} />
+    <Line.Segment point1={[-10, 1]} point2={[0, 1]} color={Theme.red} />
+    <Line.Segment point1={[0, 1]} point2={[3, 4]} color={Theme.red} />
+    <Line.Segment point1={[3, 4]} point2={[5, 2]} color={Theme.red} />
+    <Line.Segment point1={[5, 2]} point2={[9, 4]} color={Theme.red} />
+  </MathDiagram>
+);
 const Unlinear_Function_Page: Page = () => (
   <ContentLayout eyebrow="Section 3: Unlinear Model" title="Unlinear Function">
     <p
@@ -49,20 +65,7 @@ const Unlinear_Function_Page: Page = () => (
       <Highlight>the sum of a set of sigmoid function</Highlight>.
     </p>
     <div className="ac-fadeIn" style={{ animationDelay: "0.2s", width: "90%" }}>
-      <MathDiagram
-        viewBox={{ x: [0, 3], y: [-1, 4] }}
-        zoom={{ min: 0.1, max: 2 }}
-      >
-        <Line.Segment point1={[-10, 1]} point2={[10, 1]} color={Theme.blue} />
-        <Line.Segment point1={[-10, 0]} point2={[5, 0]} color={Theme.blue} />
-        <Line.Segment point1={[0, 0]} point2={[5, 5]} color={Theme.blue} />
-        <Line.Segment point1={[3, 0]} point2={[4, -2]} color={Theme.blue} />
-        <Line.Segment point1={[5, 0]} point2={[9, 2]} color={Theme.blue} />
-        <Line.Segment point1={[-10, 1]} point2={[0, 1]} color={Theme.red} />
-        <Line.Segment point1={[0, 1]} point2={[3, 4]} color={Theme.red} />
-        <Line.Segment point1={[3, 4]} point2={[5, 2]} color={Theme.red} />
-        <Line.Segment point1={[5, 2]} point2={[9, 3]} color={Theme.red} />
-      </MathDiagram>
+      <Sum_of_Sigmoid_Chart />
     </div>
   </ContentLayout>
 );
@@ -135,7 +138,7 @@ const Sigmoid_Page: Page = () => (
       className="ac-fadeIn"
       style={{ animationDelay: "0.2s", position: "relative", top: "-120px" }}
     >
-      <MathBlock math="y = c\frac{1}{1+e^{-(b+wx_1)}} = \color{brown}c \color{black} \mathbb{sigmoid}(\color{seagreen}b\color{black}+\color{royalblue}w\color{black}x_1)" />
+      <MathBlock math="y = c\frac{1}{1+e^{-(b+wx)}} = \color{brown}c \color{#0a2f41} \mathbb{sigmoid}(\color{seagreen}b\color{#0a2f41}+\color{royalblue}w\color{#0a2f41}x)" />
     </div>
     <div
       className="ac-fadeIn"
@@ -166,26 +169,13 @@ const Sum_of_Sigmoid_Page: Page = () => (
         top: "-50px",
       }}
     >
-      <MathDiagram
-        viewBox={{ x: [1, 3], y: [-1, 4] }}
-        zoom={{ min: 0.1, max: 2 }}
-      >
-        <Line.Segment point1={[-10, 1]} point2={[10, 1]} color={Theme.blue} />
-        <Line.Segment point1={[-10, 0]} point2={[5, 0]} color={Theme.blue} />
-        <Line.Segment point1={[0, 0]} point2={[5, 5]} color={Theme.blue} />
-        <Line.Segment point1={[3, 0]} point2={[4, -2]} color={Theme.blue} />
-        <Line.Segment point1={[5, 0]} point2={[9, 2]} color={Theme.blue} />
-        <Line.Segment point1={[-10, 1]} point2={[0, 1]} color={Theme.red} />
-        <Line.Segment point1={[0, 1]} point2={[3, 4]} color={Theme.red} />
-        <Line.Segment point1={[3, 4]} point2={[5, 2]} color={Theme.red} />
-        <Line.Segment point1={[5, 2]} point2={[9, 3]} color={Theme.red} />
-      </MathDiagram>
+      <Sum_of_Sigmoid_Chart />
     </div>
     <div
       className="ac-fadeIn"
-      style={{ animationDelay: "0.2s", position: "relative", top: "200px" }}
+      style={{ animationDelay: "0.2s", position: "relative", top: "240px" }}
     >
-      <MathBlock math="y = b + \sum_i \color{brown}c_i \color{black} \mathbb{sigmoid}(\color{seagreen}b_i\color{black}+\color{royalblue}w_i\color{black}x_1)" />
+      <MathBlock math="y = b + \sum_i \color{brown}c_i \color{#0a2f41} \mathbb{sigmoid}(\color{seagreen}b_i\color{#0a2f41}+\color{royalblue}w_i\color{#0a2f41}x)" />
     </div>
   </ContentLayout>
 );
@@ -196,7 +186,7 @@ const Organize_a_Function2_Page: Page = () => (
     title="Organize a Function"
   >
     <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
-      <MathBlock math="\begin{align*}y &= b + \sum_jw_jx_j \\ y &= b + \sum_i \color{brown}c_i \color{black} \mathbb{sigmoid}(\color{seagreen}b_i\color{black}+\sum_j\color{royalblue}w_{ij}\color{black}x_j)\end{align*}" />
+      <MathBlock math="\begin{align*} y&= b + Wx \\ y &= b + \sum_jw_jx_j \\ y &= b + \sum_i \color{brown}c_i \color{#0a2f41} \mathbb{sigmoid}(\color{seagreen}b_i\color{#0a2f41}+\sum_j\color{royalblue}w_{ij}\color{#0a2f41}x_j)\end{align*}" />
     </div>
   </ContentLayout>
 );
@@ -207,13 +197,13 @@ const Organize_a_Function3_Page: Page = () => (
     title="Organize a Function"
   >
     <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
-      <MathBlock math="y = b + \sum_i \color{brown}c_i \color{black} \mathbb{sigmoid}(\color{seagreen}b_i\color{black}+\sum_j\color{royalblue}w_{ij}\color{black}x_j)" />
+      <MathBlock math="y = b + \sum_i \color{brown}c_i \color{#0a2f41} \mathbb{sigmoid}(\color{seagreen}b_i\color{#0a2f41}+\sum_j\color{royalblue}w_{ij}\color{#0a2f41}x_j)" />
     </div>
     <div
       className="ac-fadeIn"
       style={{ animationDelay: "0.2s", position: "relative", top: "-160px" }}
     >
-      <MathBlock math="\begin{bmatrix}r_1\\r_2\\r_3\end{bmatrix} = \begin{bmatrix}\color{seagreen}b_1\\\color{seagreen}b_2\\\color{seagreen}b_3\end{bmatrix} + \begin{bmatrix}\color{royalblue}w_11 & \color{royalblue}w_12 & \color{royalblue}w_13 \\\color{royalblue}w_21 & \color{royalblue}w_22 & \color{royalblue}w_23 \\\color{royalblue}w_31 & \color{royalblue}w_32 & \color{royalblue}w_33 \\ \end{bmatrix}\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}" />
+      <MathBlock math="\begin{bmatrix}r_1\\r_2\\r_3\end{bmatrix} = \begin{bmatrix}\color{seagreen}b_1\\\color{seagreen}b_2\\\color{seagreen}b_3\end{bmatrix} + \begin{bmatrix}\color{royalblue}w_{11} & \color{royalblue}w_{12} & \color{royalblue}w_{13} \\\color{royalblue}w_{21} & \color{royalblue}w_{22} & \color{royalblue}w_{23} \\\color{royalblue}w_{31} & \color{royalblue}w_{32} & \color{royalblue}w_{33} \\ \end{bmatrix}\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}" />
     </div>
   </ContentLayout>
 );
@@ -288,9 +278,9 @@ const Loss_Page: Page = () => (
       </li>
       <li>
         <strong style={{ color: "#0a2f41" }}>
-          <MathInline math="\boldsymbol{W, \vec{b}, c^T, b}" /> is unknown
-          parameters. Let{" "}
-          <MathInline math="\theta = \begin{bmatrix}\theta_1 & \theta_2 & \cdots\end{bmatrix}" />{" "}
+          <MathInline math="\boldsymbol{\vec{\vec{W}}, \vec{b}, c^T, b}" /> is
+          unknown parameters. Let{" "}
+          <MathInline math="\boldsymbol{\theta = \begin{bmatrix}\theta_1 & \theta_2 & \cdots\end{bmatrix}}" />{" "}
           represent a set of unknown parameters.
         </strong>
       </li>
@@ -362,11 +352,11 @@ const Optimization_of_New_Model_Page: Page = () => (
 \frac{\partial L}{\partial \theta_2} \Big|_{\theta=\theta^0} \\ 
 \vdots 
 \end{bmatrix} \text{ , } \begin{bmatrix}\theta^1_1 \\ \theta^1_2 \\ \vdots \end{bmatrix} \leftarrow \begin{bmatrix}\theta^0_1 \\ \theta^0_2 \\ \vdots \end{bmatrix} - \begin{bmatrix}
-\color{brown}\eta\color{black}\frac{\partial L}{\partial \theta_1} \Big|_{\theta=\theta^0} \\ 
-\color{brown}\eta\color{black}\frac{\partial L}{\partial \theta_2} \Big|_{\theta=\theta^0} \\ 
+\color{brown}\eta\color{#0a2f41}\frac{\partial L}{\partial \theta_1} \Big|_{\theta=\theta^0} \\ 
+\color{brown}\eta\color{#0a2f41}\frac{\partial L}{\partial \theta_2} \Big|_{\theta=\theta^0} \\ 
 \vdots 
 \end{bmatrix} \\
-        g &= \bigtriangledown L(\theta^0) \text{ , } \theta^1 \leftarrow \theta^0 - \color{brown}\eta \color{black}g\end{align*}"
+        g &= \bigtriangledown L(\theta^0) \text{ , } \theta^1 \leftarrow \theta^0 - \color{brown}\eta \color{#0a2f41}g\end{align*}"
       />
     </div>
   </ContentLayout>
@@ -403,7 +393,7 @@ const Activation_Function_Page: Page = () => (
     title="Activation Function"
   >
     <div className="ac-fadeIn" style={{ animationDelay: "0.2s" }}>
-      <MathBlock math="\begin{align*}&\text{Sigmoid }&& \frac{1}{1+e^{-(b+wx_1)}} \\ \\ &\text{Rectified Linear Unit, ReLU }&& c \max{(0, b+wx_1)} \end{align*}" />
+      <MathBlock math="\begin{align*}&\text{Sigmoid }&& \frac{1}{1+e^{-(b+wx)}} \\ \\ &\text{Rectified Linear Unit, ReLU }&& c \max{(0, b+wx)} \end{align*}" />
     </div>
   </ContentLayout>
 );

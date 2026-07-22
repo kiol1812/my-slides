@@ -77,16 +77,16 @@ const Batch2_Page: Page = () => (
       Update for each small batch{" "}
       <MathInline math="\rightarrow \underline{\text{short time for cooldown}}_{\text{x}}" />
       , but noisy. <br />
-      Larger batch
+      Large batch
       <MathInline math="\rightarrow \underline{\text{long time for cooldown}}_{\text{x}}" />
       , but powerful. <br />
       <br />
-      Larger batch size does not require longer time to compute gradient, <br />
+      Large batch size does not require longer time to compute gradient, <br />
       because we have <Highlight>parallel computing</Highlight>. But parallel
       computing have limitation. <br />
       <br />
-      Smaller batch requires longer time for one epoch (longer time for seeing
-      all data once).
+      Small batch requires longer time for one epoch (longer time for seeing all
+      data once).
       <Callout type="warning" title="Take a way">
         Noisy update is better for training. small batch is better on testing
         data.
@@ -98,7 +98,7 @@ const Batch2_Page: Page = () => (
 const Batch3_Page: Page = () => (
   <ContentWithImgLayout
     eyebrow="Section 7: Optimization"
-    title="Smaller Batch or Larger Batch?"
+    title="Small Batch or Large Batch?"
     textFlex={0}
     imgFlex={4}
     imageNode={
@@ -123,7 +123,7 @@ const Batch3_Page: Page = () => (
 const Batch4_Page: Page = () => (
   <ContentWithImgLayout
     eyebrow="Section 7: Optimization"
-    title="Smaller Batch or Larger Batch?"
+    title="Small Batch or Large Batch?"
     textFlex={0}
     imgFlex={4}
     imageNode={
@@ -301,7 +301,7 @@ export const BatchSizeComparisonTable = () => {
 const Batch5_Page: Page = () => (
   <ContentLayout
     eyebrow="Section 7: Optimization"
-    title="Smaller Batch or Larger Batch?"
+    title="Small Batch or Large Batch?"
   >
     <div
       style={{
@@ -699,8 +699,8 @@ export const section7Slides: Page[] = [
   Learning_Rate_Scheduling_Page,
   Summary_Page,
   Batch_Normalization2_Page,
-  Batch_Normalization3_Page,
   Considering_Deep_Learning_Page,
   Considering_Deep_Learning2_Page,
+  Batch_Normalization3_Page,
   Batch_Normalization4_Page,
 ];

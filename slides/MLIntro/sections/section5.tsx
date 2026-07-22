@@ -71,7 +71,7 @@ const Model_Bias_Page: Page = () => (
         className="ac-fadeIn"
         style={{ animationDelay: "0.2s", width: "90%" }}
       >
-        <MathBlock math="y = b + wx_1 \xrightarrow{More features} y = b + \sum_{j=1}^{56} w_j x_j \\ \text{Deep Learning (more neurons, layers)} \downarrow \\ y = b + \sum_i c_i \sigma(b_i + \sum_j w_{ij}x_j)" />
+        <MathBlock math="y = b + Wx \xrightarrow{More features} y = b + \sum_{j=1}^{56} w_j x_j \\ \text{Deep Learning (more neurons, layers)} \downarrow \\ y = b + \sum_i c_i \sigma(b_i + \sum_j w_{ij}x_j)" />
       </div>
       <div
         className="ac-fadeIn"

@@ -217,7 +217,7 @@ const Tayler_Series_Approximation_Page: Page = () => (
       className="ac-fadeIn"
       style={{ animationDelay: "0.2s", position: "relative", top: "-65px" }}
     >
-      <MathBlock math="L(\theta) \approx L(\color{royalblue} \theta '\color{black}) + \color{seagreen}\underline{\textcolor{black}(\theta - \textcolor{royalblue} \theta '\textcolor{black})^T \textcolor{seagreen}g}\color{black} + \textcolor{brown}{\underline{\textcolor{black}{\frac{1}{2}(\theta - \textcolor{royalblue}{\theta'})^T \textcolor{brown}{H}(\theta - \textcolor{royalblue}{\theta'})}}}" />
+      <MathBlock math="L(\theta) \approx L(\color{royalblue} \theta '\color{#0a2f41}) + \color{seagreen}\underline{\textcolor{#0a2f41}(\theta - \textcolor{royalblue} \theta '\textcolor{#0a2f41})^T \textcolor{seagreen}g}\color{#0a2f41} + \textcolor{brown}{\underline{\textcolor{#0a2f41}{\frac{1}{2}(\theta - \textcolor{royalblue}{\theta'})^T \textcolor{brown}{H}(\theta - \textcolor{royalblue}{\theta'})}}}" />
     </div>
     <div
       style={{
@@ -235,8 +235,8 @@ const Tayler_Series_Approximation_Page: Page = () => (
         style={{ animationDelay: "0.2s", position: "relative", top: "-75px" }}
       >
         <MathBlock
-          math="\text{Gradient }\color{seagreen}g\color{black}\text{ is a \underline{vector}} \\ \color{seagreen}g\color{black} = \bigtriangledown L (\color{royalblue}\theta '\color{black}), \color{seagreen}g\color{black}_i = \frac{\partial L(\color{royalblue}\theta '\color{black})}{\partial \theta_i} \\
-          \text{Hessian }\color{brown}H\color{black}\text{ is a \underline{matrix}} \\ \color{brown}H\color{black}_{ij} = \frac{\partial^2}{\partial \theta_i \partial \theta_j} L(\color{royalblue}\theta '\color{black})"
+          math="\text{Gradient }\color{seagreen}g\color{#0a2f41}\text{ is a \underline{vector}} \\ \color{seagreen}g\color{#0a2f41} = \bigtriangledown L (\color{royalblue}\theta '\color{#0a2f41}), \color{seagreen}g\color{#0a2f41}_i = \frac{\partial L(\color{royalblue}\theta '\color{#0a2f41})}{\partial \theta_i} \\
+          \text{Hessian }\color{brown}H\color{#0a2f41}\text{ is a \underline{matrix}} \\ \color{brown}H\color{#0a2f41}_{ij} = \frac{\partial^2}{\partial \theta_i \partial \theta_j} L(\color{royalblue}\theta '\color{#0a2f41})"
         />
       </div>
       <div
@@ -299,22 +299,22 @@ const Hessian_Page: Page = () => (
       }}
     >
       At critical point:{" "}
-      <MathInline math="L(\theta) \approx L(\color{royalblue} \theta '\color{black}) + \textcolor{brown}{\underline{\textcolor{black}{\frac{1}{2}(\theta - \textcolor{royalblue}{\theta'})^T \textcolor{brown}{H}(\theta - \textcolor{royalblue}{\theta'})}}}" />
+      <MathInline math="L(\theta) \approx L(\color{royalblue} \theta '\color{#0a2f41}) + \textcolor{brown}{\underline{\textcolor{#0a2f41}{\frac{1}{2}(\theta - \textcolor{royalblue}{\theta'})^T \textcolor{brown}{H}(\theta - \textcolor{royalblue}{\theta'})}}}" />
       <br /> Let{" "}
-      <MathInline math="v \triangleq (\theta - \textcolor{royalblue}{\theta'}) \Rightarrow \frac{1}{2}v^T\color{brown}H\color{black}v" />
+      <MathInline math="v \triangleq (\theta - \textcolor{royalblue}{\theta'}) \Rightarrow \frac{1}{2}v^T\color{brown}H\color{#0a2f41}v" />
       <br />
       <br />
-      <MathInline math="\text{For all } v\text{: }v^T\color{brown}H\color{black}v > 0 \Rightarrow \text{Around } \color{royalblue}\theta '\color{black}: L(\theta) > L(\color{royalblue}\theta '\color{black}) \Rightarrow \underline{\text{Local minima}}" />
+      <MathInline math="\text{For all } v\text{: }v^T\color{brown}H\color{#0a2f41}v > 0 \Rightarrow \text{Around } \color{royalblue}\theta '\color{#0a2f41}: L(\theta) > L(\color{royalblue}\theta '\color{#0a2f41}) \Rightarrow \underline{\text{Local minima}}" />
       <br />
-      <MathInline math="\text{(}v^T\color{brown}H\color{black}v > 0 = \color{brown}H\color{black} \text{ is positive define} = \text{All eigen values are positive.)}" />
-      <br />
-      <br />
-      <MathInline math="\text{For all } v\text{: }v^T\color{brown}H\color{black}v < 0 \Rightarrow \text{Around } \color{royalblue}\theta '\color{black}: L(\theta) < L(\color{royalblue}\theta '\color{black}) \Rightarrow \underline{\text{Local maxima}}" />
-      <br />
-      <MathInline math="\text{(}v^T\color{brown}H\color{black}v < 0 = \color{brown}H\color{black} \text{ is negative define} = \text{All eigen values are negative.)}" />
+      <MathInline math="\text{(}v^T\color{brown}H\color{#0a2f41}v > 0 = \color{brown}H\color{#0a2f41} \text{ is positive define} = \text{All eigen values are positive.)}" />
       <br />
       <br />
-      <MathInline math="\text{Sometimes }v^T\color{brown}H\color{black}v > 0, \text{Sometimes }v^T\color{brown}H\color{black}v < 0 \Rightarrow \underline{\text{Saddle point}}" />
+      <MathInline math="\text{For all } v\text{: }v^T\color{brown}H\color{#0a2f41}v < 0 \Rightarrow \text{Around } \color{royalblue}\theta '\color{#0a2f41}: L(\theta) < L(\color{royalblue}\theta '\color{#0a2f41}) \Rightarrow \underline{\text{Local maxima}}" />
+      <br />
+      <MathInline math="\text{(}v^T\color{brown}H\color{#0a2f41}v < 0 = \color{brown}H\color{#0a2f41} \text{ is negative define} = \text{All eigen values are negative.)}" />
+      <br />
+      <br />
+      <MathInline math="\text{Sometimes }v^T\color{brown}H\color{#0a2f41}v > 0, \text{Sometimes }v^T\color{brown}H\color{#0a2f41}v < 0 \Rightarrow \underline{\text{Saddle point}}" />
       <br />
       <MathInline math="\text{(Some eigen values are positive, and some are negative.)}" />
     </p>
@@ -335,14 +335,14 @@ const Hessian2_Page: Page = () => (
         margin: 0,
       }}
     >
-      <MathInline math="\text{Sometimes }v^T\color{brown}H\color{black}v > 0, \text{Sometimes }v^T\color{brown}H\color{black}v < 0 \Rightarrow \underline{\text{Saddle point}}" />
+      <MathInline math="\text{Sometimes }v^T\color{brown}H\color{#0a2f41}v > 0, \text{Sometimes }v^T\color{brown}H\color{#0a2f41}v < 0 \Rightarrow \underline{\text{Saddle point}}" />
       <br />
       <MathInline math="\color{brown} H \text{ may tell us parameter update direction!}" />
       <MathBlock
-        math="\begin{matrix}\text{Let } u \text{ be an eigen vector of } \color{brown}H\color{black} \\ \text{Let } \lambda \text{ be the eigen value of } u \\ \lambda < 0 \end{matrix} \Rightarrow
-        \begin{matrix}u^T\color{brown}H\color{black}u & = u^T(\lambda u) & = \lambda ||u||^2 \\ < 0 & & < 0 \end{matrix} \\
-        L(\theta) \approx L(\color{royalblue} \theta '\color{black}) + \textcolor{black}{\frac{1}{2}(\theta - \textcolor{royalblue}{\theta'})^T \textcolor{brown}{H}(\theta - \textcolor{royalblue}{\theta'})} \Rightarrow L(\theta) < L(\color{royalblue}\theta'\color{black}) \\
-        \theta - \color{royalblue} \theta '\color{black} = u, \theta = \color{royalblue} \theta '\color{black} + u"
+        math="\begin{matrix}\text{Let } u \text{ be an eigen vector of } \color{brown}H\color{#0a2f41} \\ \text{Let } \lambda \text{ be the eigen value of } u \\ \lambda < 0 \end{matrix} \Rightarrow
+        \begin{matrix}u^T\color{brown}H\color{#0a2f41}u & = u^T(\lambda u) & = \lambda ||u||^2 \\ < 0 & & < 0 \end{matrix} \\
+        L(\theta) \approx L(\color{royalblue} \theta '\color{#0a2f41}) + \textcolor{#0a2f41}{\frac{1}{2}(\theta - \textcolor{royalblue}{\theta'})^T \textcolor{brown}{H}(\theta - \textcolor{royalblue}{\theta'})} \Rightarrow L(\theta) < L(\color{royalblue}\theta'\color{#0a2f41}) \\
+        \theta - \color{royalblue} \theta '\color{#0a2f41} = u, \theta = \color{royalblue} \theta '\color{#0a2f41} + u"
       />
     </p>
   </ContentLayout>

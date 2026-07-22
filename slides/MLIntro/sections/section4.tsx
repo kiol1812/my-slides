@@ -41,7 +41,7 @@ const Gradient_Descent_Page: Page = () => (
     </p>
     <div
       className="ac-fadeIn"
-      style={{ animationDelay: "0.2s", position: "relative", top: "-70px" }}
+      style={{ animationDelay: "0.2s", position: "relative", top: "-60px" }}
     >
       <MathBlock math="\bigtriangledown L(\theta) = \begin{bmatrix} \partial L(\theta)/ \partial w_1 \\ \partial L(\theta)/ \partial w_2 \\ \vdots \\ \partial L(\theta)/ \partial b_1 \\ \partial L(\theta)/ \partial b_2 \\ \vdots \end{bmatrix}, \begin{matrix} \text{Compute} \bigtriangledown L(\theta^0) & & \theta^1 = \theta^0 - \eta \bigtriangledown L(\theta^0) \\ \text{Compute} \bigtriangledown L(\theta^1) & & \theta^2 = \theta^1 - \eta \bigtriangledown L(\theta^1) \\ & \vdots & \end{matrix}" />
     </div>
@@ -70,6 +70,7 @@ const Chain_Rule_Page: Page = () => (
       <br />
       <MathInline math="\frac{dz}{dx} = \frac{dz}{dy}\frac{dy}{dx}" />
       <br />
+      <br />
       Case II. <br />
       <MathInline math="x = g(s), y = h(s), z = k(x, y)" />
       <br />
@@ -90,7 +91,7 @@ const Backpropagation_Page: Page = () => (
       className="ac-fadeIn"
       style={{ animationDelay: "0.2s", position: "relative", top: "-70px" }}
     >
-      <MathBlock math="\begin{matrix}L(\theta) = \sum_{n=1}^{N}C^n(\theta) \\ \\ \Downarrow \\ \\ \frac{\partial L(\theta)}{\partial w} = \sum_{n=1}^{N} \frac{\partial C^n(\theta)}{\partial w} \\ \\ \frac{\partial C}{\partial w} = \frac{\partial z}{\partial w}\frac{\partial C}{\partial z} \end{matrix}" />
+      <MathBlock math="\begin{matrix}L(\theta) = \sum_{n=1}^{N}C^n(\theta) \\ \\ \Downarrow \\ \\ \frac{\partial L(\theta)}{\partial w} = \sum_{n=1}^{N} \frac{\partial C^n(\theta)}{\partial w} \\ \\ \frac{\partial C}{\partial w} = ? \end{matrix}" />
     </div>
   </ContentWithImgLayout>
 );
@@ -155,7 +156,7 @@ const Backward_Pass_Page: Page = () => (
         style={{ animationDelay: "0.2s", position: "relative", top: "0px" }}
       >
         <MathBlock
-          math="\frac{\partial C}{\partial z} = \frac{\partial a}{\color{seagreen} \partial z}\color{royalblue}\frac{\partial C}{\partial a}\color{black}, \frac{\partial C}{\partial a} = \frac{\partial z'}{\partial a}\frac{\partial C}{\partial z'} + \frac{\partial z''}{\partial a}\frac{\partial C}{\partial z''} \\
+          math="\frac{\partial C}{\partial z} = \frac{\partial a}{\color{seagreen} \partial z}\color{royalblue}\frac{\partial C}{\partial a}\color{#0a2f41}, \frac{\partial C}{\partial a} = \frac{\partial z'}{\partial a}\frac{\partial C}{\partial z'} + \frac{\partial z''}{\partial a}\frac{\partial C}{\partial z''} \\
           \frac{\partial C}{\partial z} = \sigma'(z)(w_3 \frac{\partial C}{\partial z'} + w_4 \frac{\partial C}{\partial z''}), \sigma'(z) \text{ is a constant}"
         />
       </div>
@@ -177,7 +178,7 @@ const Summary_Page: Page = () => (
         className="ac-fadeIn"
         style={{ animationDelay: "0.2s", position: "relative", top: "0px" }}
       >
-        <MathBlock math="\begin{align*} \frac{\partial C}{\partial w} & = \color{seagreen}\frac{\partial z}{\partial w} \color{black} \times \color{royalblue} \frac{\partial C}{\partial z} \color{black} \\ & = \color{seagreen} a \color{black} \times \color{royalblue} \frac{\partial C}{\partial z} \end{align*}" />
+        <MathBlock math="\begin{align*} \frac{\partial C}{\partial w} & = \color{seagreen}\frac{\partial z}{\partial w} \color{#0a2f41} \times \color{royalblue} \frac{\partial C}{\partial z} \color{#0a2f41} \\ & = \color{seagreen} a \color{#0a2f41} \times \color{royalblue} \frac{\partial C}{\partial z} \end{align*}" />
       </div>
     }
   >

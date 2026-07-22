@@ -34,7 +34,7 @@ export const Cover: Page = () => (
       </h2>
       <div className="ac-fadeIn" style={{ fontSize: 36, lineHeight: 1.6 }}>
         <p>kiol1812</p>
-        <p>2026/07/06</p>
+        <p>2026/07/22</p>
       </div>
     </div>
   </div>

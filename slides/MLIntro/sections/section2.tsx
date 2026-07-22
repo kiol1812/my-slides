@@ -24,7 +24,7 @@ const Function_with_Unknow_Paramters: Page = () => (
       Form a function based on domain knowledge, e.g.
     </p>
 
-    <MathBlock math="y = f_{\theta}(x) = b + Wx_1" />
+    <MathBlock math="y = f_{W,b}(x) = b + Wx" />
 
     <p
       className="ac-fadeIn"
@@ -35,7 +35,7 @@ const Function_with_Unknow_Paramters: Page = () => (
         margin: 0,
       }}
     >
-      then, we called <MathInline math="f_{\theta}(x)" /> by{" "}
+      then, we called <MathInline math="f_{W,b}(x)" /> by{" "}
       <Highlight>
         <strong style={{ color: "#0a2f41" }}>model</strong>
       </Highlight>{" "}
@@ -43,7 +43,7 @@ const Function_with_Unknow_Paramters: Page = () => (
       <Highlight>
         <strong style={{ color: "#0a2f41" }}>feature</strong>
       </Highlight>{" "}
-      <MathInline math="x_1" />,{" "}
+      <MathInline math="x" />,{" "}
       <Highlight>
         <strong style={{ color: "#0a2f41" }}>weight</strong>
       </Highlight>{" "}
@@ -92,7 +92,7 @@ const Define_Loss_from_Training_Data: Page = () => (
     >
       Calculate the gap, called <MathInline math="e_n" />, which between predict
       value <MathInline math="y" /> and ground true{" "}
-      <MathInline math="\hat{y}" />. Ground true is also called by
+      <MathInline math="\hat{y}" />. Ground true is also called by{" "}
       <Highlight>
         <strong style={{ color: "#0a2f41" }}>label</strong>
       </Highlight>

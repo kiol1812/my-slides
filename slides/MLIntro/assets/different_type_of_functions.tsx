@@ -42,7 +42,7 @@ export const different_type_of_functions_nodes = [
     data: {
       label: (
         <span>
-          concetration <br /> of <MathInline math="O_3" />
+          concentration <br /> of <MathInline math="O_3" />
         </span>
       ),
       targetPosition: Position.Left,
@@ -75,14 +75,14 @@ export const different_type_of_functions_nodes = [
     data: {
       label: (
         <span>
-          <MathInline math="y" />
+          <MathInline math="PM2.5 \text{ tomorrow}" />
         </span>
       ),
       targetPosition: Position.Left,
       sourcePosition: Position.Right,
       erase_bg: true,
       erase_border: true,
-      width: "50px",
+      width: "200px",
     },
   },
   {
