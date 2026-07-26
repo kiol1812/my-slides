@@ -18,7 +18,7 @@ export const meta: SlideMeta = {
   theme: "academic",
 };
 export default [
-  Cover,
+  Cover({}),
   createTocSlide(sectionData),
   ...section1Slides,
   ...section2Slides,
