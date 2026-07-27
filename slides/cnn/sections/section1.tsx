@@ -5,10 +5,7 @@ import {
   ContentWithImgLayout,
 } from "../../../components/academic/content";
 import { createSectionSlide } from "../../../components/academic/section";
-import { Callout } from "../../../components/shared/callout";
 import { MathInline, MathBlock } from "../../../components/shared/math";
-import { Highlight } from "../../../components/shared/highlight";
-import { FlowDiagram } from "../../../components/shared/flowDiagram";
 import { MathDiagram } from "../../../components/shared/mathDiagram";
 import { Plot, Line, Theme, LaTeX, Text } from "mafs";
 
@@ -291,6 +288,272 @@ const Thresholding2: Page = () => (
   </ContentWithImgLayout>
 );
 
+const intensity_func = (x: number) => {
+  if (x < 5 || x > 15) return 1;
+  if (x < 10) return 0.4 * Math.pow(x - 5, 2) + 1;
+  return 0.4 * Math.pow(x - 15, 2) + 1;
+};
+const intensity_func_derivative = (x: number): number => {
+  if (x < 5 || x > 15) return 0;
+  if (x < 10) return 0.8 * (x - 5);
+  if (x > 10) return 0.8 * (x - 15);
+  return 0;
+};
+const Edge_Detection: Page = () => (
+  <ContentLayout
+    eyebrow="Section 1: Computer Vision"
+    title="Edge Detection Operators"
+    authorInfo="Convolutional Neural Network"
+  >
+    <ul
+      className="ac-fadeIn"
+      style={{
+        fontSize: 28,
+        color: "#555",
+        lineHeight: 1.8,
+        margin: 0,
+        paddingLeft: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
+      <li>
+        <strong style={{ color: "#0a2f41" }}>First-Derivative Operators</strong>{" "}
+        (e.g. Sobel Operator):
+      </li>
+      <ul
+        className="ac-fadeIn"
+        style={{
+          fontSize: 28,
+          color: "#555",
+          lineHeight: 1.8,
+          margin: 0,
+          paddingLeft: 40,
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+        }}
+      >
+        <li>
+          Detects abrupt grayscale intensity changes via gradient magnitude.
+        </li>
+        <li>
+          Utilizes directional kernels to extract vertical and horizontal edges.
+        </li>
+      </ul>
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          Second-Derivative Operators
+        </strong>{" "}
+        (e.g. Laplacian Operator):
+      </li>
+      <ul
+        className="ac-fadeIn"
+        style={{
+          fontSize: 28,
+          color: "#555",
+          lineHeight: 1.8,
+          margin: 0,
+          paddingLeft: 40,
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+        }}
+      >
+        <li>Detects edges via Zero-Crossing detection.</li>
+        <li>
+          Result in narriower/sharper edges compared to first derivatives,
+          through edge line may double.
+        </li>
+      </ul>
+    </ul>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        height: "100%",
+        boxSizing: "border-box",
+        flex: 1,
+        position: "relative",
+        top: "-50px",
+      }}
+    >
+      <div
+        className="ac-fadeIn"
+        style={{ animationDelay: "0.2s", width: "90%" }}
+      >
+        <MathDiagram
+          viewBox={{ x: [5, 15], y: [-6, 12] }}
+          zoom={{ min: 0.1, max: 2 }}
+        >
+          <Plot.OfX y={intensity_func} color={Theme.foreground} weight={5} />
+          <Line.Segment
+            point1={[0, 5]}
+            point2={[20, 5]}
+            weight={5}
+            color="#a3cbe6"
+          />
+          <Line.Segment
+            point1={[8.16228, 0]}
+            point2={[8.16228, 12]}
+            style="dashed"
+            weight={5}
+            color="#7bb58a"
+          />
+          <Line.Segment
+            point1={[11.83772, 0]}
+            point2={[11.83772, 12]}
+            style="dashed"
+            weight={5}
+            color="#7bb58a"
+          />
+          <Text x={18} y={6} attach="n" attachDistance={15} size={48}>
+            Threshold
+          </Text>
+        </MathDiagram>
+      </div>
+      <div
+        className="ac-fadeIn"
+        style={{ animationDelay: "0.2s", width: "90%" }}
+      >
+        <MathDiagram
+          viewBox={{ x: [5, 15], y: [-9, 7] }}
+          zoom={{ min: 0.1, max: 2 }}
+        >
+          <Plot.OfX
+            y={intensity_func_derivative}
+            color={Theme.foreground}
+            weight={5}
+          />
+        </MathDiagram>
+      </div>
+    </div>
+  </ContentLayout>
+);
+
+const Img_Enhancement: Page = () => (
+  <ContentLayout
+    eyebrow="Section 1: Computer Vision"
+    title="Image Enhancement"
+    authorInfo="Convolutional Neural Network"
+  >
+    <ul
+      className="ac-fadeIn"
+      style={{
+        fontSize: 28,
+        color: "#555",
+        lineHeight: 1.8,
+        margin: 0,
+        paddingLeft: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          Histogram Equalization (HE):
+        </strong>{" "}
+        Streches intensity distributions to enhance overall contrast;
+        ineffective for single-color biases images (e.g. underwater).
+      </li>
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          Contrast Limited Adaptive Histogram Equalization (CLAHE):
+        </strong>{" "}
+        Prevents over-amplification of noise by clipping high-frequency
+        histogram distributions.
+      </li>
+      <li>
+        <strong style={{ color: "#0a2f41" }}>White Balance:</strong> Adjusts
+        colors so that white objects appear white under varying light sources.
+      </li>
+      <li>
+        <strong style={{ color: "#0a2f41" }}>Gray World Theory:</strong> Assumes
+        the average reflectance of a scene is achromatic (gray) across RGB
+        channels.
+      </li>
+    </ul>
+  </ContentLayout>
+);
+
+const Evaluation: Page = () => (
+  <ContentLayout
+    eyebrow="Section 1: Computer Vision"
+    title="Performance Evaluation"
+    authorInfo="Convolutional Neural Network"
+  >
+    <div
+      className="ac-fadeIn"
+      style={{ animationDelay: "0.2s", position: "relative", top: "-80px" }}
+    >
+      <MathBlock math="IoU = \frac{\text{Area of Overlap}}{\text{Area of Union}}" />
+    </div>
+    <ul
+      className="ac-fadeIn"
+      style={{
+        fontSize: 28,
+        color: "#555",
+        lineHeight: 1.8,
+        margin: 0,
+        paddingLeft: 40,
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+        position: "relative",
+        top: "-120px",
+      }}
+    >
+      <li>
+        <strong style={{ color: "#0a2f41" }}>
+          Intersection over Union (IoU):
+        </strong>
+      </li>
+      <ul
+        className="ac-fadeIn"
+        style={{
+          fontSize: 28,
+          color: "#555",
+          lineHeight: 1.8,
+          margin: 0,
+          paddingLeft: 40,
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+        }}
+      >
+        <li>
+          Measures pixel-level accuacy between predicted bounding boxes/masks
+          and ground true.
+        </li>
+        <li>
+          Standard Benchmark: <MathInline math="IoU \ge 0.5" /> is considered
+          acceptable.
+        </li>
+      </ul>
+      <li>
+        <strong style={{ color: "#0a2f41" }}>Confusion Matrix:</strong>
+      </li>
+      <ul
+        className="ac-fadeIn"
+        style={{
+          fontSize: 28,
+          color: "#555",
+          lineHeight: 1.8,
+          margin: 0,
+          paddingLeft: 40,
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+        }}
+      >
+        <li>Used to evaluate classification and detection precision/recall.</li>
+      </ul>
+    </ul>
+  </ContentLayout>
+);
+
 export const section1Slides: Page[] = [
   createSectionSlide(0, sectionData),
   Tasks,
@@ -298,4 +561,7 @@ export const section1Slides: Page[] = [
   Img_Binarization,
   Thresholding,
   Thresholding2,
+  Edge_Detection,
+  Img_Enhancement,
+  Evaluation,
 ];
