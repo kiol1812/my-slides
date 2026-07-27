@@ -30,6 +30,10 @@ import {
   self_attention_edges,
 } from "../assets/Self_Attention";
 import MultiHeadImg from "../assets/multi_head.png";
+import {
+  self_attention_graph_nodes,
+  self_attention_graph_edges,
+} from "../assets/Self_Attention_Graph";
 
 const Sophisticated_Input: Page = () => (
   <ContentLayout
@@ -470,6 +474,192 @@ const Self_Attention_vs_CNN: Page = () => (
   </ContentLayout>
 );
 
+const AttentionMatrix = () => {
+  const matrixData = [
+    [0, 0, 0, 0, "#669933", "#ffcc00", 0, "#ff9900"], // Row 1
+    [0, 0, "ring", 0, 0, 0, 0, 0], // Row 2
+    [0, "ring", 0, 1, 1, 1, 0, 0], // Row 3
+    [0, 0, 1, 0, 1, 0, 0, 0], // Row 4
+    ["#669933", 0, 1, 1, 0, 0, 0, 0], // Row 5
+    ["#ffcc00", 0, 1, 0, 0, 0, 1, 0], // Row 6
+    [0, 0, 0, 0, 0, 1, 0, 1], // Row 7
+    ["#ff9900", 0, 0, 0, 0, 0, 1, 0], // Row 8
+  ];
+
+  const gridItems = [];
+
+  // 建立頂部欄位標頭 (1~8)
+  gridItems.push(<div key="empty-top-left" />);
+  for (let i = 1; i <= 8; i++) {
+    gridItems.push(
+      <div
+        key={`header-col-${i}`}
+        style={{ textAlign: "center", fontWeight: "bold" }}
+      >
+        {i}
+      </div>,
+    );
+  }
+
+  // 建立每一列以及其包含的單元格
+  matrixData.forEach((row, rIdx) => {
+    // 建立左側列頭 (1~8)
+    gridItems.push(
+      <div
+        key={`header-row-${rIdx}`}
+        style={{
+          textAlign: "center",
+          fontWeight: "bold",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {rIdx + 1}
+      </div>,
+    );
+
+    // 建立矩陣內部單元格
+    row.forEach((cell, cIdx) => {
+      gridItems.push(
+        <div
+          key={`cell-${rIdx}-${cIdx}`}
+          style={{
+            width: 32,
+            height: 32,
+            backgroundColor: cell !== 0 ? "#b3c6e6" : "transparent",
+            border: "1px solid #777",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            boxSizing: "border-box",
+          }}
+        >
+          {cell !== 0 && cell !== 1 && cell !== "ring" && (
+            <div
+              style={{
+                width: 18,
+                height: 18,
+                borderRadius: "50%",
+                backgroundColor: cell as string,
+              }}
+            />
+          )}
+          {cell === "ring" && (
+            <div
+              style={{
+                width: 14,
+                height: 14,
+                borderRadius: "50%",
+                border: "3px solid #aaa",
+                backgroundColor: "transparent",
+              }}
+            />
+          )}
+        </div>,
+      );
+    });
+  });
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        marginTop: 20,
+      }}
+    >
+      <span
+        style={{
+          fontSize: 22,
+          borderBottom: "2px solid #555",
+          marginBottom: 10,
+          color: "#333",
+        }}
+      >
+        Attention Matrix
+      </span>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(9, 32px)",
+          gap: 0,
+        }}
+      >
+        {gridItems}
+      </div>
+    </div>
+  );
+};
+
+// 將 AttentionMatrix 加入到投影片的左側內容區
+const Self_Attention_For_Graph: Page = () => (
+  <ContentLayout
+    eyebrow="Section 1: Self-Attention"
+    title="Self-attention for Graph"
+    authorInfo="Transformer"
+  >
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <div
+        style={{
+          flex: 1,
+          paddingRight: "20px",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <ul
+          className="ac-fadeIn"
+          style={{
+            fontSize: 28,
+            color: "#555",
+            lineHeight: 1.8,
+            margin: 0,
+            paddingLeft: 40,
+            display: "flex",
+            flexDirection: "column",
+            gap: 16,
+          }}
+        >
+          <li>
+            Consider <strong style={{ color: "#0a2f41" }}>edge</strong>: only
+            attention to connected nodes.
+          </li>
+          <li>This is one type of Graph Neural Network (GNN).</li>
+        </ul>
+
+        <div className="ac-fadeIn" style={{ animationDelay: "0.4s" }}>
+          <AttentionMatrix />
+        </div>
+      </div>
+
+      <div
+        className="ac-fadeIn"
+        style={{
+          animationDelay: "0.2s",
+          flex: 1,
+          height: "500px",
+          position: "relative",
+          top: "-30px",
+        }}
+      >
+        <FlowDiagram
+          nodes={self_attention_graph_nodes}
+          edges={self_attention_graph_edges}
+        />
+      </div>
+    </div>
+  </ContentLayout>
+);
+
 export const section1Slides: Page[] = [
   createSectionSlide(0, sectionData),
   Sophisticated_Input,
@@ -484,4 +674,5 @@ export const section1Slides: Page[] = [
   Multi_Head,
   PositionalEncoding,
   Self_Attention_vs_CNN,
+  Self_Attention_For_Graph,
 ];
