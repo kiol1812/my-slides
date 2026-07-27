@@ -11,19 +11,23 @@
   },
   "dependencies": {
     "@open-slide/core": "^1.13.2",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
     "@xyflow/react": "^12.11.1",
     "katex": "^0.17.0",
     "mafs": "^0.21.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-katex": "^3.1.0"
+    "react-katex": "^3.1.0",
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@types/katex": "^0.16.8",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/react-katex": "^3.0.4",
+    "@types/three": "^0.185.1",
     "vite": "^5.4.10"
   }
 }

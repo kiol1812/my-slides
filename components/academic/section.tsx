@@ -118,6 +118,7 @@ export const createSectionSlide = (
       sectionNumber={index + 1}
       title={data.title}
       subtitle={data.subtitle}
+      authorInfo={data.authorInfo}
     />
   );
 };

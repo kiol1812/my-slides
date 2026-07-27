@@ -7,6 +7,7 @@ import { Footer } from "./footer";
 export interface SectionItem {
   title: string;
   subtitle?: string;
+  authorInfo?: string;
 }
 
 export const createTocSlide = (sectionData: SectionItem[]): Page => {
@@ -78,7 +79,13 @@ export const createTocSlide = (sectionData: SectionItem[]): Page => {
           ))}
         </div>
       </div>
-      <Footer authorInfo="Machine Learning Intro" />
+      <Footer
+        authorInfo={
+          sectionData[0].authorInfo
+            ? sectionData[0].authorInfo
+            : "Machine Learning Intro"
+        }
+      />
     </div>
   );
 };
