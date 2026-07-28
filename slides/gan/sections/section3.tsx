@@ -1,6 +1,6 @@
 import React from "react";
 import { type Page } from "@open-slide/core";
-import { Plot, Text } from "mafs";
+import { LaTeX, Plot, Text } from "mafs";
 
 import { ContentLayout } from "../../../components/academic/content";
 import { createSectionSlide } from "../../../components/academic/section";
@@ -79,9 +79,7 @@ const ObjectiveSlide: Page = () => (
               color="#2ca089"
               weight={5}
             />
-            <Text x={-1.5} y={1.0} size={40} color="#2ca089">
-              P_G
-            </Text>
+            <LaTeX at={[-1.5, 1.0]} tex={String.raw`P_G`} color="#2ca089" />
 
             {/* P_data (Real Distribution) */}
             <Plot.OfX
@@ -89,9 +87,7 @@ const ObjectiveSlide: Page = () => (
               color="#4a7499"
               weight={5}
             />
-            <Text x={2} y={1.2} size={40} color="#4a7499">
-              P_data
-            </Text>
+            <LaTeX at={[2, 1.2]} tex={String.raw`P_{data}`} color="#4a7499" />
 
             {/* Arrow connecting them */}
             <Plot.OfX
@@ -192,7 +188,7 @@ const JSDivergence2Slide: Page = () => (
         className="ac-fadeIn"
         style={{ animationDelay: "0.4s", marginTop: "10px" }}
       >
-        <MathBlock math="D^* = \arg\max_D V(D,G)" />
+        <MathBlock math="D^* = \arg\max_D V(D,G) \\ \begin{align*} G^* &= \arg\min_G \color{brown} \text{Div}(P_G, P_{data}) \\ &= \arg\min_G \max_D V(D,G) \end{align*}" />
         <div
           style={{
             textAlign: "center",

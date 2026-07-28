@@ -4,9 +4,11 @@ import { type Page } from "@open-slide/core";
 import { ContentLayout } from "../../../components/academic/content";
 import { createSectionSlide } from "../../../components/academic/section";
 import { MathInline, MathBlock } from "../../../components/shared/math";
+import { MathDiagram } from "../../../components/shared/mathDiagram";
 import { Highlight } from "../../../components/shared/highlight";
 import { Callout } from "../../../components/shared/callout";
 import { sectionData } from "../meta";
+import { Line, Theme, Text, LaTeX } from "mafs";
 
 export const JSDivergenceIssueSlide: Page = () => (
   <ContentLayout
@@ -48,13 +50,34 @@ export const JSDivergenceIssueSlide: Page = () => (
       </ul>
       <div
         className="ac-fadeIn"
-        style={{ animationDelay: "0.2s", marginTop: 20 }}
+        style={{ animationDelay: "0.2s", width: "90%" }}
       >
-        <Callout type="warning" title="The Vanishing Gradient Problem">
-          When the Discriminator becomes too strong, the Generator receives no
-          meaningful gradients to improve, as the loss function provides no
-          directional guidance.
-        </Callout>
+        <MathDiagram
+          viewBox={{ x: [5, 15], y: [-0.5, 2] }}
+          zoom={{ min: 1, max: 1 }}
+        >
+          <Line.Segment
+            point1={[6, 0]}
+            point2={[6, 3]}
+            weight={5}
+            color="#7bb58a"
+          />
+          <Line.Segment
+            point1={[11.9, 0]}
+            point2={[11.9, 3]}
+            weight={5}
+            color="#7bb58a"
+          />
+          <Line.Segment
+            point1={[12, 0]}
+            point2={[12, 3]}
+            weight={5}
+            color="brown"
+          />
+          <LaTeX at={[6.2, 1.0]} tex={String.raw`P_{G_0}`} color="#7bb58a" />
+          <LaTeX at={[11.7, 1.0]} tex={String.raw`P_{G_1}`} color="#7bb58a" />
+          <LaTeX at={[12.25, 1.0]} tex={String.raw`P_{data}`} color="brown" />
+        </MathDiagram>
       </div>
     </div>
   </ContentLayout>
@@ -113,7 +136,7 @@ export const WGANObjectiveSlide: Page = () => (
   >
     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
       <div className="ac-fadeIn">
-        <MathBlock math="\max_{D \in 1	ext{-Lipschitz}} \left\{ \mathbb{E}_{x \sim P_{data}}[D(x)] - \mathbb{E}_{x \sim P_G}[D(x)] \right\}" />
+        <MathBlock math="\max_{D \in \text{1-Lipschitz}} \left\{ \mathbb{E}_{y \sim P_{data}}[D(x)] - \mathbb{E}_{y \sim P_G}[D(x)] \right\}" />
       </div>
       <ul
         className="ac-fadeIn"

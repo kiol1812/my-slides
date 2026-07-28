@@ -25,6 +25,21 @@ export const createArrowEdge = (
 // 1. Basic GAN Architecture Flow
 export const basic_gan_nodes: Node[] = [
   {
+    id: "x",
+    type: "custom",
+    position: { x: 50, y: 50 },
+    data: {
+      label: (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <span>x</span>
+        </div>
+      ),
+      sourcePosition: Position.Right,
+      width: "240px",
+      height: "90px",
+    },
+  },
+  {
     id: "z",
     type: "custom",
     position: { x: 50, y: 150 },
@@ -71,6 +86,7 @@ export const basic_gan_nodes: Node[] = [
   },
 ];
 export const basic_gan_edges: Edge[] = [
+  createArrowEdge("x", "g"),
   createArrowEdge("z", "g"),
   createArrowEdge("g", "y"),
 ];
