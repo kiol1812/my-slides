@@ -20,4 +20,20 @@ export const sectionData: SectionItem[] = [
     subtitle: "JS Divergence and Loss Functions",
     authorInfo: "Generative Adversarial Network",
   },
+  {
+    title: "Wasserstein GAN",
+    authorInfo: "Generative Adversarial Network",
+  },
+  {
+    title: "Evaluation & Challenges",
+    authorInfo: "Generative Adversarial Network",
+  },
+  {
+    title: "Conditional Generation",
+    authorInfo: "Generative Adversarial Network",
+  },
+  {
+    title: "Unsupervised Conditional Generation",
+    authorInfo: "Generative Adversarial Network",
+  },
 ];
