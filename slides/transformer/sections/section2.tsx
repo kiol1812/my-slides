@@ -9,6 +9,7 @@ import { MathInline, MathBlock } from "../../../components/shared/math";
 import { sectionData } from "../meta";
 import EncoderImg from "../assets/encoder.png";
 import DecoderImg from "../assets/decoder.png";
+import TransformerImg from "../assets/transformer.png";
 
 // ==========================================
 // Custom Visual Components for Section 2
@@ -89,7 +90,7 @@ const CrossAttentionDiagram = () => (
     }}
   >
     <div
-      style={{ display: "flex", justifyContent: "space-between", width: "80%" }}
+      style={{ display: "flex", justifyContent: "space-around", width: "80%" }}
     >
       <div style={{ textAlign: "center" }}>
         <div style={{ fontWeight: "bold", marginBottom: 5, color: "#0a2f41" }}>
@@ -484,6 +485,32 @@ const Transformer_Decoder_Details: Page = () => (
   </ContentWithImgLayout>
 );
 
+const Transformer_Details: Page = () => (
+  <ContentWithImgLayout
+    eyebrow="Section 2: Transformer"
+    title="Transformer Architecture"
+    authorInfo="Transformer"
+    textFlex={1}
+    imgFlex={1}
+    imageNode={
+      <img
+        src={TransformerImg}
+        alt="Transformer Representation"
+        style={{
+          width: "100%",
+          borderRadius: 16,
+          objectFit: "contain",
+          position: "relative",
+          top: "-80px",
+          left: "-550px",
+        }}
+      />
+    }
+  >
+    <div />
+  </ContentWithImgLayout>
+);
+
 const Cross_Attention: Page = () => (
   <ContentLayout
     eyebrow="Section 2: Transformer"
@@ -500,7 +527,7 @@ const Cross_Attention: Page = () => (
     >
       <div
         style={{
-          flex: 1,
+          flex: 1.3,
           paddingRight: "30px",
           display: "flex",
           flexDirection: "column",
@@ -535,7 +562,7 @@ const Cross_Attention: Page = () => (
           </li>
         </ul>
       </div>
-      <div className="ac-fadeIn" style={{ animationDelay: "0.2s", flex: 1 }}>
+      <div className="ac-fadeIn" style={{ animationDelay: "0.2s", flex: 0.7 }}>
         <CrossAttentionDiagram />
       </div>
     </div>
@@ -1206,6 +1233,7 @@ export const section2Slides: Page[] = [
   Seq2Seq_Overview,
   Transformer_Encoder_Details,
   Transformer_Decoder_Details,
+  Transformer_Details,
   Cross_Attention,
   AT_vs_NAT,
   Training_And_Tips,

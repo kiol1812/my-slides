@@ -9,7 +9,7 @@ import { MathInline, MathBlock } from "../../../components/shared/math";
 import { MathDiagram } from "../../../components/shared/mathDiagram";
 import { FlowDiagram } from "../../../components/shared/flowDiagram";
 import { Highlight } from "../../../components/shared/highlight";
-import { Plot, Line, Theme, LaTeX, Text, Point, Ellipse } from "mafs";
+import { Plot, Line, Theme, LaTeX, Text, Point, Polyline, Ellipse } from "mafs";
 
 import { sectionData } from "../meta";
 import {
@@ -84,7 +84,7 @@ const Vector_Set_as_Input: Page = () => (
         style={{ animationDelay: "0.2s", width: "90%" }}
       >
         <MathBlock
-          math="One-hot Encoding \\ \begin{align*}
+          math="\text{One-hot Encoding} \\ \begin{align*}
           & apple && = \begin{bmatrix} 1 & 0 & 0 & 0 & \dots \end{bmatrix} \\
           & bag && = \begin{bmatrix} 0 & 1 & 0 & 0 & \dots \end{bmatrix} \\
           & cat && = \begin{bmatrix} 0 & 0 & 1 & 0 & \dots \end{bmatrix} \\
@@ -133,6 +133,84 @@ const Vector_Set_as_Input: Page = () => (
   </ContentLayout>
 );
 
+export default function AudioFramingDiagram() {
+  return (
+    <MathDiagram
+      viewBox={{ x: [-1, 8], y: [-1.5, 1.5] }}
+      zoom={{ min: 0.5, max: 3 }}
+    >
+      <Plot.OfX
+        y={(x) => {
+          const envelope =
+            0.02 +
+            0.3 * Math.exp(-Math.pow((x - 1.8) / 0.3, 2)) +
+            0.8 * Math.exp(-Math.pow((x - 3.2) / 0.5, 2)) +
+            0.2 * Math.exp(-Math.pow((x - 5.0) / 0.3, 2)) +
+            0.6 * Math.exp(-Math.pow((x - 6.5) / 0.5, 2)) +
+            0.7 * Math.exp(-Math.pow((x - 9.5) / 0.4, 2));
+          return Math.sin(80 * x) * Math.cos(25 * x) * envelope;
+        }}
+        color="blue"
+        weight={1.5}
+      />
+      <Line.Segment point1={[0, 1]} point2={[3.5, 1]} color="red" weight={2} />
+      <Line.Segment
+        point1={[0, -1]}
+        point2={[3.5, -1]}
+        color="red"
+        weight={2}
+      />
+      <Line.Segment point1={[0, 1]} point2={[0, -1]} color="red" weight={2} />
+      <Line.Segment point1={[1, 1]} point2={[1, -1]} color="red" weight={2} />
+      <Line.Segment
+        point1={[2.5, 1]}
+        point2={[2.5, -1]}
+        color="red"
+        weight={2}
+      />
+      <Line.Segment
+        point1={[3.5, 1]}
+        point2={[3.5, -1]}
+        color="red"
+        weight={2}
+      />
+
+      <Polyline
+        points={[
+          [0, 1.05],
+          [0, 1.2],
+          [0.5, 1.35],
+          [1, 1.2],
+          [1, 1.05],
+        ]}
+        color="black"
+        weight={2}
+      />
+      <Text x={0.5} y={1.6} size={24}>
+        10ms
+      </Text>
+
+      <Polyline
+        points={[
+          [0, -1.05],
+          [0, -1.2],
+          [1.25, -1.4],
+          [2.5, -1.2],
+          [2.5, -1.05],
+        ]}
+        color="black"
+        weight={2}
+      />
+      <Text x={1.25} y={-1.7} size={24}>
+        25ms
+      </Text>
+
+      <Text x={7} y={1.8} size={32}>
+        1s → 100 frames
+      </Text>
+    </MathDiagram>
+  );
+}
 const Vector_Set_as_Input2: Page = () => (
   <ContentLayout
     eyebrow="Section 1: Self-Attention"
@@ -162,10 +240,34 @@ const Vector_Set_as_Input2: Page = () => (
       </li>
     </ul>
     <div
-      className="ac-fadeIn"
-      style={{ animationDelay: "0.2s", height: "450px", width: "80%" }}
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        height: "100%",
+        boxSizing: "border-box",
+        flex: 1,
+      }}
     >
-      <FlowDiagram nodes={vector_graph_nodes} edges={vector_graph_edges} />
+      <div
+        className="ac-fadeIn"
+        style={{
+          animationDelay: "0.2s",
+          height: "450px",
+          width: "100%",
+        }}
+      >
+        <AudioFramingDiagram />
+      </div>
+      <div
+        className="ac-fadeIn"
+        style={{
+          animationDelay: "0.2s",
+          height: "450px",
+          width: "100%",
+        }}
+      >
+        <FlowDiagram nodes={vector_graph_nodes} edges={vector_graph_edges} />
+      </div>
     </div>
   </ContentLayout>
 );
