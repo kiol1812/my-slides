@@ -69,7 +69,7 @@ export const CycleGanSlide: Page = () => (
         height: "100%",
       }}
     >
-      <div style={{ flex: 1.2 }}>
+      <div style={{ flex: 1 }}>
         <CycleGANVisualizer />
       </div>
       <div
@@ -78,6 +78,8 @@ export const CycleGanSlide: Page = () => (
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          position: "relative",
+          top: "-30px",
         }}
       >
         <ul

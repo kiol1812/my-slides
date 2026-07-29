@@ -129,7 +129,7 @@ export default function CycleGANVisualizer() {
     <div
       style={{
         width: "100%",
-        height: "360px",
+        height: "460px",
         background: "white",
         borderRadius: "16px",
         border: "2px solid #e2e8f0",
