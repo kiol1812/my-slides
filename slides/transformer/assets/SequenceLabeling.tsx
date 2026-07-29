@@ -1,0 +1,406 @@
+import { Position, MarkerType } from "@xyflow/react";
+
+const line1_y = 25;
+const line2_y = 150;
+const line3_y = 275;
+
+const col1_x = 200;
+const padding_x = 100;
+
+// 定義節點 (注意 data.label 裡面可以直接放 JSX / React 元件)
+export const sequence_labeling_nodes = [
+  {
+    id: "0",
+    type: "custom",
+    position: { x: col1_x - 10, y: line3_y - 10 },
+    data: {
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "270px",
+      height: "90px",
+      erase_bg: true,
+    },
+  },
+  {
+    id: "0-1",
+    type: "custom",
+    position: { x: col1_x - 10, y: line3_y + 60 },
+    data: {
+      label: <span>Window</span>,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "270px",
+      height: "90px",
+      erase_bg: true,
+      erase_border: true,
+    },
+  },
+  {
+    id: "1-0",
+    type: "custom",
+    position: { x: col1_x - padding_x, y: line3_y },
+    data: {
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "1",
+    type: "custom",
+    position: { x: col1_x, y: line3_y },
+    data: {
+      label: <span>I</span>,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "1-2",
+    type: "custom",
+    position: { x: col1_x + padding_x, y: line3_y },
+    data: {
+      label: <span>saw</span>,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "1-3",
+    type: "custom",
+    position: { x: col1_x + padding_x * 2, y: line3_y },
+    data: {
+      label: <span>a</span>,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "1-4",
+    type: "custom",
+    position: { x: col1_x + padding_x * 3, y: line3_y },
+    data: {
+      label: <span>saw</span>,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "1-5",
+    type: "custom",
+    position: { x: col1_x + padding_x * 4, y: line3_y },
+    data: {
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "2-0",
+    type: "custom",
+    position: { x: col1_x, y: line2_y },
+    data: {
+      label: <span>FC</span>,
+      highlight: true,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "2",
+    type: "custom",
+    position: { x: col1_x + padding_x, y: line2_y },
+    data: {
+      label: <span>FC</span>,
+      highlight: true,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "2-2",
+    type: "custom",
+    position: { x: col1_x + padding_x * 2, y: line2_y },
+    data: {
+      label: <span>FC</span>,
+      highlight: true,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "2-3",
+    type: "custom",
+    position: { x: col1_x + padding_x * 3, y: line2_y },
+    data: {
+      label: <span>FC</span>,
+      highlight: true,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "3",
+    type: "custom",
+    position: { x: col1_x, y: line1_y },
+    data: {
+      label: <span>N</span>,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "3-2",
+    type: "custom",
+    position: { x: col1_x + padding_x, y: line1_y },
+    data: {
+      label: <span>V</span>,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "3-3",
+    type: "custom",
+    position: { x: col1_x + padding_x * 2, y: line1_y },
+    data: {
+      label: <span>DET</span>,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+  {
+    id: "3-4",
+    type: "custom",
+    position: { x: col1_x + padding_x * 3, y: line1_y },
+    data: {
+      label: <span>N</span>,
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Top,
+      width: "50px",
+    },
+  },
+];
+
+// 定義連線 (帶有動畫的箭頭)
+export const sequence_labeling_edges = [
+  {
+    id: "e1_0-2_0",
+    source: "1-0",
+    target: "2-0",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e1-2_0",
+    source: "1",
+    target: "2-0",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e1_2-2_0",
+    source: "1-2",
+    target: "2-0",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e1-2",
+    source: "1",
+    target: "2",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e1_2-2",
+    source: "1-2",
+    target: "2",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e1_3-2",
+    source: "1-3",
+    target: "2",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e1_2-2_2",
+    source: "1-2",
+    target: "2-2",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e1_3-2_2",
+    source: "1-3",
+    target: "2-2",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e1_4-2_2",
+    source: "1-4",
+    target: "2-2",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e1_3-2_3",
+    source: "1-3",
+    target: "2-3",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e1_4-2_3",
+    source: "1-4",
+    target: "2-3",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e1_5-2_3",
+    source: "1-5",
+    target: "2-3",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e2_0-3",
+    source: "2-0",
+    target: "3",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e2-3_2",
+    source: "2",
+    target: "3-2",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e2_3-3_3",
+    source: "2-2",
+    target: "3-3",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+  {
+    id: "e2_3-3_4",
+    source: "2-3",
+    target: "3-4",
+    animated: true,
+    style: { stroke: "#7c9fa8", strokeWidth: 3 },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+      color: "#7c9fa8",
+    },
+  },
+];
