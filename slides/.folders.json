@@ -21,6 +21,7 @@
     "MLIntro": "f-221e0a96",
     "cnn": "f-221e0a96",
     "gan": "f-b2caf34e",
-    "transformer": "f-b2caf34e"
+    "transformer": "f-b2caf34e",
+    "self-supervised_learning": "f-b2caf34e"
   }
 }
