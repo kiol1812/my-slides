@@ -48,10 +48,6 @@ export default function MultilingualBertVisualizer() {
         {wordPair("jump", "跳", "#f59e0b", "#60a5fa")}
         {wordPair("swim", "游", "#f59e0b", "#60a5fa")}
         {wordPair("fish", "魚", "#f59e0b", "#60a5fa")}
-        <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 10, color: "#475569", fontSize: 24 }}>
-          <div>Average of Chinese embeddings</div>
-          <div>Average of English embeddings</div>
-        </div>
       </div>
 
       <div style={{ position: "absolute", right: 30, top: 108, width: 530, height: 372, borderRadius: 22, background: "linear-gradient(180deg, #e7f0da 0%, #dbead2 100%)", border: "4px solid #1d4ed8", boxShadow: "0 20px 40px rgba(29, 78, 216, 0.16)" }}>
@@ -59,10 +55,12 @@ export default function MultilingualBertVisualizer() {
           <div>Multi-BERT</div>
           <div>Reconstruction</div>
         </div>
-        <div style={{ position: "absolute", left: 50, right: 50, top: 150, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 22, alignItems: "end" }}>
+        <div style={{ position: "absolute", left: 50, right: 50, top: 95, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 22, alignItems: "end" }}>
           {["there", "is", "a", "cat"].map((label, index) => (
             <div key={label} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
-              <div style={{ width: 18, height: 116 - index * 4, borderRadius: 4, background: index % 2 === 0 ? "#f59e0b" : "#60a5fa", boxShadow: "0 8px 18px rgba(10, 47, 65, 0.16)" }} />
+              <div style={{ width: 18, height: 56 - index * 4, borderRadius: 4, background: "#60a5fa", boxShadow: "0 8px 18px rgba(10, 47, 65, 0.16)" }} />
+              {"+"}
+              <div style={{ width: 18, height: 56 - index * 4, borderRadius: 4, background: "#f59e0b", boxShadow: "0 8px 18px rgba(10, 47, 65, 0.16)" }} />
               <div style={{ width: 2, height: 24, background: "#111827" }} />
               <div style={{ fontSize: 20, color: "#0f172a", fontWeight: 700 }}>{label}</div>
             </div>

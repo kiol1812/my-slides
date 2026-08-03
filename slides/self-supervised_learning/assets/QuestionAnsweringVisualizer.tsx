@@ -37,7 +37,7 @@ const Panel = ({ title, score }: { title: string; score: string }) => (
       overflow: "hidden",
     }}
   >
-    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+    <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center" }}>
       <div style={{ fontSize: 24, fontWeight: 800, color: "#0a2f41" }}>{title}</div>
       <div style={{ fontSize: 20, fontWeight: 700, color: "#dc2626", border: "2px solid #dc2626", borderRadius: 10, padding: "2px 10px" }}>
         {score}
@@ -64,14 +64,13 @@ const Panel = ({ title, score }: { title: string; score: string }) => (
         </div>
       </div>
     </div>
-    <div style={{ position: "absolute", left: 36, right: 36, top: 98, height: 138, borderRadius: 18, border: "3px solid #f59e0b", background: "rgba(245, 158, 11, 0.05)" }} />
+    <div style={{ position: "absolute", left: 11, right: 11, top: 108, height: 93, borderRadius: 18, border: "3px solid #f59e0b", background: "rgba(245, 158, 11, 0.05)" }} />
   </div>
 );
 
 export default function QuestionAnsweringVisualizer() {
   return (
     <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 16 }}>
-      <div style={{ fontSize: 44, fontWeight: 800, color: "#0a2f41" }}>Extraction-Based Question Answering</div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
         <Panel title="Predict start position" score="s = 2" />
         <Panel title="Predict end position" score="e = 3" />

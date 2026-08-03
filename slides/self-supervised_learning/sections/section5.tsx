@@ -37,9 +37,6 @@ const ClassificationSlide: Page = () => (
         A pretrained BERT encoder can be reused for sentiment analysis, topic classification, or natural language inference.
       </li>
       <li>
-        For token-level tasks such as POS tagging, each hidden state can feed its own prediction head.
-      </li>
-      <li>
         The pretrained encoder gives the classifier a much stronger starting point than random initialization.
       </li>
     </ul>
