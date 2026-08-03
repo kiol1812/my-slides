@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "open-slide dev --no-skills-check --open",
     "build": "open-slide build",
+    "postbuild": "node scripts/copy-gh-pages-fallback.mjs",
     "preview": "open-slide preview",
     "sync:skills": "open-slide sync:skills"
   },
