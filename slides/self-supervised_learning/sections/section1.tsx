@@ -19,7 +19,8 @@ const OverviewSlide: Page = () => (
       className="ac-fadeIn"
       style={{ fontSize: 32, color: "#0a2f41", lineHeight: 1.7, margin: 0 }}
     >
-      Self-supervised learning builds a training signal from the input data itself, so the model can learn useful structure without manual labels.
+      Self-supervised learning builds a training signal from the input data
+      itself, so the model can learn useful structure without manual labels.
     </p>
     <div className="ac-fadeIn" style={{ animationDelay: "0.1s" }}>
       <MathBlock math="x \rightarrow x' , x'' \quad \text{and} \quad \min \; d\big(f(x'), x''\big)" />
@@ -39,13 +40,18 @@ const OverviewSlide: Page = () => (
       }}
     >
       <li>
-        The input is split into a <strong style={{ color: "#0a2f41" }}>context</strong> and a <strong style={{ color: "#0a2f41" }}>target</strong> derived from the same sample.
+        The input is split into a{" "}
+        <strong style={{ color: "#0a2f41" }}>context</strong> and a{" "}
+        <strong style={{ color: "#0a2f41" }}>target</strong> derived from the
+        same sample.
       </li>
       <li>
-        The model learns by predicting the missing or transformed part of the data.
+        The model learns by predicting the missing or transformed part of the
+        data.
       </li>
       <li>
-        This turns unlabeled data into a <Highlight>supervision source</Highlight>.
+        This turns unlabeled data into a{" "}
+        <Highlight>supervision source</Highlight>.
       </li>
     </ul>
   </ContentLayout>
@@ -71,23 +77,29 @@ const PretrainFineTuneSlide: Page = () => (
       }}
     >
       <li>
-        The pre-training task is usually a <strong style={{ color: "#0a2f41" }}>proxy objective</strong> that is easier to define than the downstream task.
+        The pre-training task is usually a{" "}
+        <strong style={{ color: "#0a2f41" }}>proxy objective</strong> that is
+        easier to define than the downstream task.
       </li>
       <li>
-        The learned representations are transferred to the task we really care about through <strong style={{ color: "#0a2f41" }}>fine-tuning</strong>.
+        The learned representations are transferred to the task we really care
+        about through <strong style={{ color: "#0a2f41" }}>fine-tuning</strong>.
       </li>
       <li>
-        The main benefit is better initialization, especially when labeled data is limited.
+        The main benefit is better initialization, especially when labeled data
+        is limited.
       </li>
     </ul>
     <Callout type="insight" title="Core idea">
-      Pre-training solves a data-centered task first, then fine-tuning adapts the model to the real application.
+      Pre-training solves a data-centered task first, then fine-tuning adapts
+      the model to the real application.
     </Callout>
     <p
       className="ac-fadeIn"
       style={{ fontSize: 28, color: "#0a2f41", lineHeight: 1.7, margin: 0 }}
     >
-      In practice, the model learns reusable features instead of memorizing a single label space.
+      In practice, the model learns reusable features instead of memorizing a
+      single label space.
     </p>
   </ContentLayout>
 );

@@ -1,11 +1,13 @@
 import React from "react";
 import { type Page } from "@open-slide/core";
 
-import { ContentWithImgLayout, ContentLayout } from "../../../components/academic/content";
+import {
+  ContentWithImgLayout,
+  ContentLayout,
+} from "../../../components/academic/content";
 import { createSectionSlide } from "../../../components/academic/section";
 import { MathBlock } from "../../../components/shared/math";
 import { Callout } from "../../../components/shared/callout";
-import { Highlight } from "../../../components/shared/highlight";
 
 import { sectionData } from "../meta";
 import MultilingualBertVisualizer from "../assets/MultilingualBertVisualizer";
@@ -17,7 +19,7 @@ const ContextualEmbeddingSlide: Page = () => (
     authorInfo="Self-Supervised Learning"
   >
     <div className="ac-fadeIn" style={{ animationDelay: "0.1s" }}>
-      <MathBlock math="\cos(\mathbf{h}_{\text{apple in computer}}, \mathbf{h}_{\text{apple in juice}})" />
+      <MathBlock math="\cos(\mathbf{h}_{\text{apple in computer}}, \mathbf{h}_{\text{apple in juice}}), \cos \triangleq \text{cosine similarity}" />
     </div>
     <ul
       className="ac-fadeIn"
@@ -34,13 +36,16 @@ const ContextualEmbeddingSlide: Page = () => (
       }}
     >
       <li>
-        The same token can have very different hidden states in different contexts.
+        The same token can have very different hidden states in different
+        contexts.
       </li>
       <li>
-        BERT acts as a deep contextual embedding model rather than a static word embedding table.
+        BERT acts as a deep contextual embedding model rather than a static word
+        embedding table.
       </li>
       <li>
-        MLM is a bidirectional generalization of the idea behind CBOW.
+        Masked Language Modeling (MLM) is a bidirectional generalization of the
+        idea behind CBOW.
       </li>
     </ul>
     <Callout type="insight" title="Representation shift">
@@ -72,17 +77,21 @@ const MultiLingualAndGptSlide: Page = () => (
       }}
     >
       <li>
-        Multilingual BERT learns a shared representation space from many languages.
+        Multilingual BERT learns a shared representation space from many
+        languages.
       </li>
       <li>
-        When the data scale is large enough, cross-lingual alignment improves naturally.
+        When the data scale is large enough, cross-lingual alignment improves
+        naturally.
       </li>
       <li>
-        GPT uses next-token prediction and can perform few-shot or zero-shot learning from the prompt alone.
+        GPT uses next-token prediction and can perform few-shot or zero-shot
+        learning from the prompt alone.
       </li>
     </ul>
-    <Callout type="warning" title="Prompting behavior">
-      A small number of examples in the prompt can guide the model without changing its weights.
+    <Callout type="warning" title="Prompting behavior (in-context learning)">
+      A small number of examples in the prompt can guide the model without
+      changing its weights.
     </Callout>
   </ContentWithImgLayout>
 );

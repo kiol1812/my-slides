@@ -28,17 +28,19 @@ const GlueSlide: Page = () => (
       }}
     >
       <li>
-        GLUE combines multiple language understanding tasks into a single benchmark.
+        General Language Understanding Evaluation (GLUE) combines multiple
+        language understanding tasks <br /> into a single benchmark.
       </li>
+      <li>The score is usually computed as the average over the task suite.</li>
       <li>
-        The score is usually computed as the average over the task suite.
-      </li>
-      <li>
-        The goal is to measure the <strong style={{ color: "#0a2f41" }}>generalization ability</strong> of the pretrained encoder.
+        The goal is to measure the{" "}
+        <strong style={{ color: "#0a2f41" }}>generalization ability</strong> of
+        the pretrained encoder.
       </li>
     </ul>
     <Callout type="insight" title="Evaluation mindset">
-      A pretrained model is useful only if it transfers to new tasks better than a random initialization.
+      A pretrained model is useful only if it transfers to new tasks better than
+      a random initialization.
     </Callout>
   </ContentLayout>
 );
@@ -63,13 +65,17 @@ const SuperBSlide: Page = () => (
       }}
     >
       <li>
-        SUPERB is the speech counterpart of GLUE and evaluates multiple speech tasks with one representation backbone.
+        <Highlight>Speech processing Universal PERformance Benchmark</Highlight>{" "}
+        (SUPERB) is the speech counterpart of GLUE and evaluates multiple speech
+        tasks with one representation backbone.
       </li>
       <li>
-        It helps compare different self-supervised speech models under a shared protocol.
+        It helps compare different self-supervised speech models under a shared
+        protocol.
       </li>
       <li>
-        The <Highlight>s3prl</Highlight> toolkit provides an implementation for running those benchmarks.
+        The <Highlight>s3prl</Highlight> toolkit provides an implementation for
+        running those benchmarks.
       </li>
     </ul>
     <div
@@ -85,7 +91,8 @@ const SuperBSlide: Page = () => (
         color: "#444",
       }}
     >
-      A benchmark is valuable when it makes transfer, comparison, and reproducibility straightforward.
+      A benchmark is valuable when it makes transfer, comparison, and
+      reproducibility straightforward.
     </div>
   </ContentLayout>
 );

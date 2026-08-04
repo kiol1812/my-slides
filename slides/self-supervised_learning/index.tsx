@@ -18,7 +18,7 @@ export const meta: SlideMeta = {
 };
 
 export default [
-  Cover({ title: "Self-Supervised Learning", date: "2026/08/03" }),
+  Cover({ title: "Self-Supervised Learning", date: "2026/08/05" }),
   createTocSlide(sectionData),
   ...section1Slides,
   ...section2Slides,

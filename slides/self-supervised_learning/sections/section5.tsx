@@ -1,11 +1,10 @@
 import React from "react";
 import { type Page } from "@open-slide/core";
 
-import { ContentWithImgLayout, ContentLayout } from "../../../components/academic/content";
+import { ContentWithImgLayout } from "../../../components/academic/content";
 import { createSectionSlide } from "../../../components/academic/section";
 import { Callout } from "../../../components/shared/callout";
 import { Badge } from "../../../components/shared/badge";
-import { Highlight } from "../../../components/shared/highlight";
 
 import { sectionData } from "../meta";
 import SequenceClassificationVisualizer from "../assets/SequenceClassificationVisualizer";
@@ -34,15 +33,18 @@ const ClassificationSlide: Page = () => (
       }}
     >
       <li>
-        A pretrained BERT encoder can be reused for sentiment analysis, topic classification, or natural language inference.
+        A pretrained BERT encoder can be reused for sentiment analysis, topic
+        classification, or natural language inference.
       </li>
       <li>
-        The pretrained encoder gives the classifier a much stronger starting point than random initialization.
+        The pretrained encoder gives the classifier a much stronger starting
+        point than random initialization.
       </li>
     </ul>
     <Badge>Transfer Learning</Badge>
     <Callout type="insight" title="What changes">
-      The encoder stays mostly the same, while the task head adapts to the new output space.
+      The encoder stays mostly the same, while the task head adapts to the new
+      output space.
     </Callout>
   </ContentWithImgLayout>
 );
@@ -71,17 +73,21 @@ const QaSlide: Page = () => (
       }}
     >
       <li>
-        The model predicts a start position and an end position inside the passage.
+        The model predicts a start position and an end position inside the
+        passage.
       </li>
       <li>
-        Inner-product attention helps score which token is most related to the question.
+        Inner-product attention helps score which token is most related to the
+        question.
       </li>
       <li>
-        The answer is extracted directly from the source text rather than generated from scratch.
+        The answer is extracted directly from the source text rather than
+        generated from scratch.
       </li>
     </ul>
     <Callout type="warning" title="Key assumption">
-      The answer must appear in the input passage, so the task is span extraction rather than free-form generation.
+      The answer must appear in the input passage, so the task is span
+      extraction rather than free-form generation.
     </Callout>
   </ContentWithImgLayout>
 );

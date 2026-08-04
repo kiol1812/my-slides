@@ -19,7 +19,9 @@ const DenoisingSlide: Page = () => (
       className="ac-fadeIn"
       style={{ fontSize: 32, color: "#0a2f41", lineHeight: 1.7, margin: 0 }}
     >
-      BART and T5 pretrain an encoder-decoder model by corrupting the input and asking the decoder to recover the original text.
+      BART and Transfer Text-to-Text Transformer (T5) pretrain an
+      encoder-decoder model by corrupting the input and asking the decoder to
+      recover the original text.
     </p>
     <div className="ac-fadeIn" style={{ animationDelay: "0.1s" }}>
       <MathBlock math="\tilde{x} = \text{corrupt}(x), \quad \hat{x} = g(f(\tilde{x}))" />
@@ -39,13 +41,16 @@ const DenoisingSlide: Page = () => (
       }}
     >
       <li>
-        The encoder reads the corrupted sequence and the decoder reconstructs the clean sequence autoregressively.
+        The encoder reads the corrupted sequence and the decoder reconstructs
+        the clean sequence autoregressively.
       </li>
       <li>
-        This is a natural fit for tasks where the output should remain fluent and structured.
+        This is a natural fit for tasks where the output should remain fluent
+        and structured.
       </li>
       <li>
-        The training objective is a reconstruction loss over the original tokens.
+        The training objective is a reconstruction loss over the original
+        tokens.
       </li>
     </ul>
     <Callout type="insight" title="General pattern">
@@ -74,20 +79,24 @@ const CorruptionSlide: Page = () => (
       }}
     >
       <li>
-        Common corruption strategies include token masking, token deletion, span infilling, and sentence permutation.
+        Common corruption strategies include token masking, token deletion, span
+        infilling, and sentence permutation.
       </li>
       <li>
-        Different objectives stress different kinds of reasoning, so the best choice depends on the downstream task.
+        Different objectives stress different kinds of reasoning, so the best
+        choice depends on the downstream task.
       </li>
       <li>
-        T5 frames the question as a design problem for how to generate the corrupted text.
+        T5 frames the question as a design problem for how to generate the
+        corrupted text.
       </li>
     </ul>
     <p
       className="ac-fadeIn"
       style={{ fontSize: 28, color: "#0a2f41", lineHeight: 1.7, margin: 0 }}
     >
-      The main idea is not to memorize noise, but to learn how to restore <Highlight>missing structure</Highlight> from context.
+      The main idea is not to memorize noise, but to learn how to restore{" "}
+      <Highlight>missing structure</Highlight> from context.
     </p>
   </ContentLayout>
 );
