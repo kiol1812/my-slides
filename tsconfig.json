@@ -18,6 +18,7 @@
     "types": [
       "@open-slide/core/env"
     ],
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
       "components/*": [

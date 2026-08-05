@@ -1,4 +1,28 @@
 {
-  "folders": [],
-  "assignments": {}
+  "folders": [
+    {
+      "id": "f-221e0a96",
+      "name": "DL old",
+      "icon": {
+        "type": "color",
+        "value": "#c0392b"
+      }
+    },
+    {
+      "id": "f-b2caf34e",
+      "name": "DL new",
+      "icon": {
+        "type": "color",
+        "value": "#b8743e"
+      }
+    }
+  ],
+  "assignments": {
+    "MLIntro": "f-221e0a96",
+    "cnn": "f-221e0a96",
+    "auto-encoder": "f-b2caf34e",
+    "gan": "f-b2caf34e",
+    "transformer": "f-b2caf34e",
+    "self-supervised_learning": "f-b2caf34e"
+  }
 }
