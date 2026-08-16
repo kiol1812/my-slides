@@ -1,28 +1,20 @@
 {
   "folders": [
     {
-      "id": "f-221e0a96",
-      "name": "DL old",
+      "id": "f-d19f7425",
+      "name": "ML 2021",
       "icon": {
         "type": "color",
-        "value": "#c0392b"
-      }
-    },
-    {
-      "id": "f-b2caf34e",
-      "name": "DL new",
-      "icon": {
-        "type": "color",
-        "value": "#b8743e"
+        "value": "#6f7a3a"
       }
     }
   ],
   "assignments": {
-    "MLIntro": "f-221e0a96",
-    "cnn": "f-221e0a96",
-    "auto-encoder": "f-b2caf34e",
-    "gan": "f-b2caf34e",
-    "transformer": "f-b2caf34e",
-    "self-supervised_learning": "f-b2caf34e"
+    "MLIntro": "f-d19f7425",
+    "cnn": "f-d19f7425",
+    "auto-encoder": "f-d19f7425",
+    "gan": "f-d19f7425",
+    "transformer": "f-d19f7425",
+    "self-supervised_learning": "f-d19f7425"
   }
 }
