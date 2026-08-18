@@ -16,6 +16,7 @@
     "gan": "f-d19f7425",
     "transformer": "f-d19f7425",
     "self-supervised_learning": "f-d19f7425",
-    "adversarial_attack": "f-d19f7425"
+    "adversarial_attack": "f-d19f7425",
+    "explainable_ml": "f-d19f7425"
   }
 }
