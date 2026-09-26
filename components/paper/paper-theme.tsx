@@ -167,6 +167,7 @@ export const SlideShell = ({
             letterSpacing: "-0.01em",
             lineHeight: 1.1,
             margin: 0,
+            whiteSpace: "pre-line",
           }}
         >
           {title}
@@ -193,16 +194,20 @@ export const SlideShell = ({
  * ========================================================================= */
 
 interface CoverProps {
+  /** 論文標題 */
   title?: string;
-  subtitle?: string;
-  author?: string;
+  /** 論文出處資訊：作者、期刊/研討會、發表年份等，換行請用 \n */
+  paperInfo?: ReactNode;
+  /** 報告者 */
+  presenter?: string;
+  /** 報告日期 */
   date?: string;
 }
 
 export const Cover = ({
   title = "Paper Title",
-  subtitle = "Research Presentation",
-  author = "Author",
+  paperInfo = "Author A, Author B, Author C · NeurIPS 2026",
+  presenter = "Presenter Name",
   date = "2026/09/26",
 }: CoverProps): Page => {
   return () => (
@@ -211,34 +216,75 @@ export const Cover = ({
         style={{
           position: "absolute",
           inset: 0,
-          padding: "160px 120px",
+          padding: "140px 80px 100px",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
+          boxSizing: "border-box",
         }}
       >
+        {/* 上方留白，讓標題落在偏上方而非畫面正中央 */}
+        <div style={{ flex: 1 }} />
+
+        {/* 論文標題 */}
         <h1
           className="ac-fadeIn"
-          style={{ fontSize: 80, fontWeight: 700, marginBottom: 24 }}
+          style={{
+            fontSize: 72,
+            fontWeight: 700,
+            lineHeight: 1.25,
+            margin: 0,
+            maxWidth: 2000,
+            whiteSpace: "pre-line",
+          }}
         >
           {title}
         </h1>
-        <h2
+
+        {/* 分隔線：淺藍色 accent */}
+        <div
           className="ac-fadeIn"
           style={{
-            fontSize: 56,
-            fontWeight: 500,
+            width: "90%",
+            height: 2,
+            background: paperTheme.color.accent,
+            margin: "48px 0",
+            flexShrink: 0,
+          }}
+        />
+
+        {/* 論文相關資訊：作者 / 出處 / 年份 */}
+        <div
+          className="ac-fadeIn"
+          style={{
+            fontSize: 27.5,
             color: paperTheme.color.muted,
-            marginBottom: 64,
+            lineHeight: 1.7,
+            maxWidth: 1200,
+            whiteSpace: "pre-line",
           }}
         >
-          {subtitle}
-        </h2>
-        <div className="ac-fadeIn" style={{ fontSize: 36, lineHeight: 1.6 }}>
-          <p>{author}</p>
-          <p>{date}</p>
+          {paperInfo}
+        </div>
+
+        {/* 撐開剩餘空間，把講者資訊推到畫面最下方 */}
+        <div style={{ flex: 1 }} />
+
+        {/* 講者資訊 + 報告日期 */}
+        <div
+          className="ac-fadeIn"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 6,
+            fontSize: 24,
+          }}
+        >
+          <span style={{ fontWeight: 600, color: paperTheme.color.text }}>
+            {presenter}
+          </span>
+          <span style={{ color: paperTheme.color.muted }}>{date}</span>
         </div>
       </div>
     </div>
@@ -272,9 +318,7 @@ export const createTocSlide = (sectionData: SectionItem[]): Page => {
           }}
         >
           <Eyebrow>Agenda</Eyebrow>
-          <h1 style={{ fontSize: 72, fontWeight: 700, margin: 0 }}>
-            Outline
-          </h1>
+          <h1 style={{ fontSize: 72, fontWeight: 700, margin: 0 }}>Outline</h1>
         </div>
         <div
           style={{
@@ -308,9 +352,7 @@ export const createTocSlide = (sectionData: SectionItem[]): Page => {
           ))}
         </div>
       </div>
-      <Footer
-        authorInfo={sectionData[0]?.authorInfo ?? "Paper Presentation"}
-      />
+      <Footer authorInfo={sectionData[0]?.authorInfo ?? "Paper Presentation"} />
     </div>
   );
 };
@@ -380,6 +422,7 @@ const SectionLayout = ({
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
               margin: 0,
+              whiteSpace: "pre-line",
             }}
           >
             {title}
@@ -595,7 +638,9 @@ export const FigureLayout = ({
 }: FigureLayoutProps) => (
   <SlideShell eyebrow={eyebrow} title={title} authorInfo={authorInfo}>
     <div style={{ display: "flex", flexDirection: "column", flex: 1, gap: 24 }}>
-      {captionPosition === "top" && caption && <CaptionText>{caption}</CaptionText>}
+      {captionPosition === "top" && caption && (
+        <CaptionText>{caption}</CaptionText>
+      )}
       <div
         style={{
           flex: 1,
@@ -606,7 +651,9 @@ export const FigureLayout = ({
       >
         {imageNode ?? <ImagePlaceholder hint={imageHint} />}
       </div>
-      {captionPosition !== "top" && caption && <CaptionText>{caption}</CaptionText>}
+      {captionPosition !== "top" && caption && (
+        <CaptionText>{caption}</CaptionText>
+      )}
     </div>
   </SlideShell>
 );
@@ -690,7 +737,11 @@ export const TableLayout = ({
         gap: 20,
       }}
     >
-      <DataTable headers={headers} rows={rows} highlightRowIndex={highlightRowIndex} />
+      <DataTable
+        headers={headers}
+        rows={rows}
+        highlightRowIndex={highlightRowIndex}
+      />
       {note && <CaptionText>{note}</CaptionText>}
     </div>
   </SlideShell>
@@ -782,7 +833,13 @@ export const PseudocodeLayout = ({
         >
           {algorithmTitle}
         </div>
-        <div style={{ fontFamily: paperTheme.font.mono, fontSize: 22, lineHeight: 1.9 }}>
+        <div
+          style={{
+            fontFamily: paperTheme.font.mono,
+            fontSize: 22,
+            lineHeight: 1.9,
+          }}
+        >
           {lines.map((line, i) => (
             <div key={i} style={{ display: "flex", gap: 20 }}>
               <span
@@ -869,7 +926,14 @@ export const TimelineLayout = ({
           >
             {item.period}
           </div>
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              gap: 6,
+            }}
+          >
             <div style={{ fontSize: 28, fontWeight: 600 }}>{item.label}</div>
             {item.description && (
               <div style={{ fontSize: 22, color: paperTheme.color.muted }}>
@@ -898,7 +962,9 @@ export const ReferencesLayout = ({
 }: ReferencesLayoutProps) => {
   const mid = Math.ceil(references.length / columns);
   const cols =
-    columns === 2 ? [references.slice(0, mid), references.slice(mid)] : [references];
+    columns === 2
+      ? [references.slice(0, mid), references.slice(mid)]
+      : [references];
 
   return (
     <div style={fill}>
@@ -919,13 +985,22 @@ export const ReferencesLayout = ({
             marginBottom: 56,
             borderBottom: `2px solid ${paperTheme.color.border}`,
             paddingBottom: 16,
+            whiteSpace: "pre-line",
           }}
         >
           {title}
         </h1>
         <div style={{ flex: 1, display: "flex", gap: 80, paddingBottom: 100 }}>
           {cols.map((col, ci) => (
-            <div key={ci} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 18 }}>
+            <div
+              key={ci}
+              style={{
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                gap: 18,
+              }}
+            >
               {col.map((ref, i) => {
                 const num = ci === 0 ? i + 1 : mid + i + 1;
                 return (
@@ -938,7 +1013,9 @@ export const ReferencesLayout = ({
                       lineHeight: 1.5,
                     }}
                   >
-                    <span style={{ color: paperTheme.color.muted, flexShrink: 0 }}>
+                    <span
+                      style={{ color: paperTheme.color.muted, flexShrink: 0 }}
+                    >
                       [{num}]
                     </span>
                     <span>{ref}</span>
@@ -980,7 +1057,15 @@ export const ClosingSlide = ({
         gap: 24,
       }}
     >
-      <h1 className="ac-fadeIn" style={{ fontSize: 88, fontWeight: 700, margin: 0 }}>
+      <h1
+        className="ac-fadeIn"
+        style={{
+          fontSize: 88,
+          fontWeight: 700,
+          margin: 0,
+          whiteSpace: "pre-line",
+        }}
+      >
         {title}
       </h1>
       <p
@@ -992,7 +1077,11 @@ export const ClosingSlide = ({
       {contact && (
         <p
           className="ac-fadeIn"
-          style={{ fontSize: 26, color: paperTheme.color.accentDark, marginTop: 40 }}
+          style={{
+            fontSize: 26,
+            color: paperTheme.color.accentDark,
+            marginTop: 40,
+          }}
         >
           {contact}
         </p>

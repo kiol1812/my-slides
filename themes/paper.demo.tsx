@@ -33,9 +33,9 @@ const sections: SectionItem[] = [
 /* ---------- Cover / Agenda ---------- */
 
 const CoverPage = Cover({
-  title: "Gradient Descent",
-  subtitle: "A Study on Optimization in Neural Networks",
-  author: "kiol1812",
+  title: "Gradient Descent:\nA Study on Optimization in Neural Networks",
+  paperInfo: "kiol1812 · Dept. of Computer Science\nSubmitted to ... 2026",
+  presenter: "kiol1812",
   date: "2026/09/26",
 });
 
