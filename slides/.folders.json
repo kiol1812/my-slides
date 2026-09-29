@@ -7,6 +7,14 @@
         "type": "color",
         "value": "#6f7a3a"
       }
+    },
+    {
+      "id": "f-f1b84878",
+      "name": "Papers",
+      "icon": {
+        "type": "color",
+        "value": "#b8743e"
+      }
     }
   ],
   "assignments": {
@@ -17,6 +25,7 @@
     "transformer": "f-d19f7425",
     "self-supervised_learning": "f-d19f7425",
     "adversarial_attack": "f-d19f7425",
-    "explainable_ml": "f-d19f7425"
+    "explainable_ml": "f-d19f7425",
+    "cai2025": "f-f1b84878"
   }
 }
