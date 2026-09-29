@@ -2,7 +2,8 @@ import { ImagePlaceholder } from "@open-slide/core";
 import { useSlidePageNumber } from "@open-slide/core";
 import { type Page } from "@open-slide/core";
 
-import { ReactNode } from "react";
+import { Fragment, ReactNode } from "react";
+import { MathInline } from "./paper-math";
 
 /* =========================================================================
  * Design tokens
@@ -12,6 +13,7 @@ export const paperTheme = {
   color: {
     bg: "#FFFFFF",
     text: "#0A2F41",
+    hl: "#FFEB3B",
     accent: "#7C9FA8",
     accentDark: "#4F7580",
     surface: "#F4F6F7",
@@ -550,6 +552,41 @@ export const DataTable = ({
  * Content layouts (core five)
  * ========================================================================= */
 
+export const Em = ({ children }: { children: ReactNode }) => (
+  <strong style={{ fontWeight: 700, color: paperTheme.color.text }}>
+    {children}
+  </strong>
+);
+
+export const Hl = ({ children }: { children: ReactNode }) => (
+  <mark
+    style={{
+      background: `linear-gradient(transparent 60%, ${paperTheme.color.hl}66 60%)`,
+      mixBlendMode: "multiply",
+      color: "inherit",
+      padding: "0 2px",
+    }}
+  >
+    {children}
+  </mark>
+);
+
+export const renderRichText = (text: ReactNode): ReactNode => {
+  if (typeof text !== "string") return text; // JSX、數字、陣列等原樣輸出
+  const TOKEN_RE =
+    /(\*\*[^*]+\*\*|==[^=]+==|\$(?!\s)[^$\n]+?(?<!\s)\$(?!\d)|(?<!\w)_(?![\s_])[^_\n]+?(?<![\s_])_(?!\w))/g;
+  return text.split(TOKEN_RE).map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**"))
+      return <Em key={i}>{part.slice(2, -2)}</Em>;
+    if (part.startsWith("==") && part.endsWith("=="))
+      return <Hl key={i}>{part.slice(2, -2)}</Hl>;
+    if (part.startsWith("$"))
+      return <MathInline key={i} math={part.slice(1, -1)} />;
+    if (part.startsWith("_")) return <i key={i}>{part.slice(1, -1)}</i>;
+    return <Fragment key={i}>{part}</Fragment>;
+  });
+};
+
 export interface BulletItem {
   text: ReactNode;
   level?: 0 | 1;
@@ -563,6 +600,56 @@ export interface BulletLayoutProps {
   authorInfo?: string;
 }
 
+export interface BulletProps {
+  items: BulletItem[];
+}
+export const Bullet = ({ items }: BulletProps) => (
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: 28,
+      justifyContent: "flex-start",
+      flex: 1,
+    }}
+  >
+    {items.map((item, i) => (
+      <div
+        key={i}
+        style={{
+          display: "flex",
+          alignItems: "flex-start",
+          gap: 20,
+          marginLeft: item.level === 1 ? 60 : 0,
+        }}
+      >
+        <div
+          style={{
+            width: 10,
+            height: 10,
+            marginTop: 14,
+            flexShrink: 0,
+            borderRadius: item.level === 1 ? 2 : "50%",
+            background:
+              item.level === 1
+                ? paperTheme.color.muted
+                : paperTheme.color.accent,
+          }}
+        />
+        <span
+          style={{
+            fontSize: item.level === 1 ? 28 : 34,
+            fontWeight: item.emphasis ? 700 : 400,
+            lineHeight: 1.4,
+          }}
+        >
+          {renderRichText(item.text)}
+        </span>
+      </div>
+    ))}
+  </div>
+);
+
 export const BulletLayout = ({
   eyebrow,
   title,
@@ -570,50 +657,7 @@ export const BulletLayout = ({
   authorInfo,
 }: BulletLayoutProps) => (
   <SlideShell eyebrow={eyebrow} title={title} authorInfo={authorInfo}>
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 28,
-        justifyContent: "center",
-        flex: 1,
-      }}
-    >
-      {items.map((item, i) => (
-        <div
-          key={i}
-          style={{
-            display: "flex",
-            alignItems: "flex-start",
-            gap: 20,
-            marginLeft: item.level === 1 ? 60 : 0,
-          }}
-        >
-          <div
-            style={{
-              width: 10,
-              height: 10,
-              marginTop: 14,
-              flexShrink: 0,
-              borderRadius: item.level === 1 ? 2 : "50%",
-              background:
-                item.level === 1
-                  ? paperTheme.color.muted
-                  : paperTheme.color.accent,
-            }}
-          />
-          <span
-            style={{
-              fontSize: item.level === 1 ? 28 : 34,
-              fontWeight: item.emphasis ? 700 : 400,
-              lineHeight: 1.4,
-            }}
-          >
-            {item.text}
-          </span>
-        </div>
-      ))}
-    </div>
+    <Bullet items={items} />
   </SlideShell>
 );
 
@@ -873,6 +917,9 @@ export interface TimelineLayoutProps {
   title: ReactNode;
   items: TimelineItem[];
   authorInfo?: string;
+  aside?: ReactNode;
+  asidePosition?: "left" | "right";
+  asideWidth?: number | string;
 }
 
 export const TimelineLayout = ({
@@ -880,11 +927,15 @@ export const TimelineLayout = ({
   title,
   items,
   authorInfo,
-}: TimelineLayoutProps) => (
-  <SlideShell eyebrow={eyebrow} title={title} authorInfo={authorInfo}>
+  aside,
+  asidePosition = "left",
+  asideWidth = "40%",
+}: TimelineLayoutProps) => {
+  const timeline = (
     <div
       style={{
         flex: 1,
+        minWidth: 0,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -929,6 +980,7 @@ export const TimelineLayout = ({
           <div
             style={{
               flex: 1,
+              minWidth: 0,
               display: "flex",
               flexDirection: "column",
               gap: 6,
@@ -944,8 +996,36 @@ export const TimelineLayout = ({
         </div>
       ))}
     </div>
-  </SlideShell>
-);
+  );
+
+  const asideColumn = aside ? (
+    <div
+      style={{
+        flex: `0 0 ${typeof asideWidth === "number" ? `${asideWidth}px` : asideWidth}`,
+        minWidth: 0,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
+      {aside}
+    </div>
+  ) : null;
+
+  return (
+    <SlideShell eyebrow={eyebrow} title={title} authorInfo={authorInfo}>
+      {aside ? (
+        <div style={{ flex: 1, display: "flex", gap: 48, minHeight: 0 }}>
+          {asidePosition === "left" && asideColumn}
+          {timeline}
+          {asidePosition === "right" && asideColumn}
+        </div>
+      ) : (
+        timeline
+      )}
+    </SlideShell>
+  );
+};
 
 export interface ReferencesLayoutProps {
   title?: string;
